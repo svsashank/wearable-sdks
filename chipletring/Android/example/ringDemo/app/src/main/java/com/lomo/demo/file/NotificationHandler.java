@@ -49,13 +49,13 @@ public class NotificationHandler {
     public static void setExerciseParams(int totalDurationSeconds, int segmentDurationSeconds) {
         exerciseConfig.totalDuration = Math.max(60, Math.min(86400, totalDurationSeconds));
         exerciseConfig.segmentTime = Math.max(30, Math.min(exerciseConfig.totalDuration, segmentDurationSeconds));
-        Log.d(TAG, "运动参数设置：总时长=" + exerciseConfig.totalDuration + "s, 每段时长=" + exerciseConfig.segmentTime + "s");
+        Log.d(TAG, "Motion settings: total=" + exerciseConfig.totalDuration + "s, per segment=" + exerciseConfig.segmentTime + "s");
     }
 
     // 设置设备命令回调
     public static void setDeviceCommandCallback(DeviceCommandCallback callback) {
         deviceCommandCallback = callback;
-        Log.d(TAG, "设备命令回调已设置");
+        Log.d(TAG, "Device command callback set");
     }
 
     // 开始运动
@@ -66,12 +66,12 @@ public class NotificationHandler {
     // 启动运动并传入运动配置
     public static boolean startExercise(ExerciseConfig config) {
         if (isExercising) {
-            Log.w(TAG, "运动已在进行中");
+            Log.w(TAG, "Motion already running");
             return false;
         }
 
         if (deviceCommandCallback == null) {
-            Log.e(TAG, "设备命令回调未设置");
+            Log.e(TAG, "Device command callback not set");
             return false;
         }
 
@@ -86,11 +86,11 @@ public class NotificationHandler {
 
             deviceCommandCallback.onExerciseStarted(config.totalDuration, config.segmentTime);
 
-            Log.i(TAG, "开始运动: " + config.getExerciseDescription());
+            Log.i(TAG, "Start motion: " + config.getExerciseDescription());
             return true;
 
         } catch (Exception e) {
-            Log.e(TAG, "启动运动失败", e);
+            Log.e(TAG, "Failed to start motion", e);
             isExercising = false;
             return false;
         }
@@ -99,7 +99,7 @@ public class NotificationHandler {
     // 结束运动
     public static boolean stopExercise() {
         if (!isExercising) {
-            Log.w(TAG, "没有进行中的运动");
+            Log.w(TAG, "No motion in progress");
             return false;
         }
 
@@ -121,11 +121,11 @@ public class NotificationHandler {
                 deviceCommandCallback.onExerciseStopped();
             }
 
-            Log.i(TAG, "运动已停止");
+            Log.i(TAG, "Motion stopped");
             return true;
 
         } catch (Exception e) {
-            Log.e(TAG, "停止运动失败", e);
+            Log.e(TAG, "Failed to stop motion", e);
             return false;
         }
     }
@@ -186,7 +186,7 @@ public class NotificationHandler {
             segmentConfig.progressResponse = measurementConfig.progressResponse;
             segmentConfig.waveformResponse = measurementConfig.waveformResponse;
 
-            Log.d(TAG, "开始第 " + (currentSegment + 1) + "/" + config.getTotalSegments() + " 段");
+            Log.d(TAG, "Starting segment " + (currentSegment + 1) + "/" + config.getTotalSegments() + "");
         }
     }
 
@@ -207,7 +207,7 @@ public class NotificationHandler {
             deviceCommandCallback.onExerciseStopped();
         }
 
-        Log.i(TAG, "运动完成");
+        Log.i(TAG, "Motion complete");
     }
 
     public static int getCurrentSegment() {

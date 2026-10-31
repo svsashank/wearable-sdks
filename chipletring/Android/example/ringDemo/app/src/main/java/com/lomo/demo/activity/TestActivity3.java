@@ -75,7 +75,7 @@ public class TestActivity3 extends BaseActivity implements IResponseListenerLite
             switch (msg.what) {
                 case 0x99:
 
-                    Logger.show("TestActivity3", "===执行指令超时===");
+                    Logger.show("TestActivity3", "=== Command timed out ===");
 
                     break;
                 default:
@@ -112,14 +112,14 @@ public class TestActivity3 extends BaseActivity implements IResponseListenerLite
 
             if(v.getId()== R.id.bt_jinxingpeidui) {
 
-                postView("进行配对\n");
+                postView("Pairing\n");
                 boolean isbonded = mBluetoothDevice.createBond();
                 autoConnect = true;
                 if (!isbonded) {//兼容判断，如果监测不能配对，启用老流程
-                    Logger.show(TAG, "HID绑定不匹配，直接连接");
+                    Logger.show(TAG, "HID bond mismatch, connecting directly");
                     BLEUtils.connectLockByBLE(TestActivity3.this, mBluetoothDevice);
                 } else {
-                    Logger.show(TAG, "HID绑定操作");
+                    Logger.show(TAG, "HID bonding");
                     // 用BroadcastReceiver来取得搜索结果
                     IntentFilter intentFilter = new IntentFilter();
                     intentFilter.addAction(BluetoothDevice.ACTION_FOUND);//搜索发现设备
@@ -137,25 +137,25 @@ public class TestActivity3 extends BaseActivity implements IResponseListenerLite
             }
             if(v.getId()==R.id.bt_quxiaopeidui) {
 
-                postView("取消配对\n");
+                postView("Cancel pairing\n");
                 BLEUtils.removeBond(mBluetoothDevice);
                 App.needAutoConnect = false;
             }
 
             if(v.getId()== R.id.bt_lanyazhilian) {
-                postView("蓝牙直连\n");
+                postView("Direct Bluetooth connect\n");
                 BLEUtils.isHIDDevice = false;
                 BLEUtils.connectLockByBLE(TestActivity3.this, mBluetoothDevice);
             }
             if(v.getId()== R.id.bt_duankailanya) {
-                postView("断开蓝牙\n");
+                postView("Disconnect Bluetooth\n");
                 BLEUtils.removeBond(mBluetoothDevice);
                 BLEUtils.disconnectBLE(TestActivity3.this);
                 App.needAutoConnect = false;
                 autoConnect = false;
             }
             if(v.getId()==R.id.bt_fendashoushi) {
-                postView("奋达手势开启\n");
+                postView("Fenda gestures on\n");
                 LmAPILite.SET_HID_FENDA((byte) 1, (byte) 0xff, (byte) 0xff, (byte) 0xff, new IHIDListener() {
                     @Override
                     public void setHIDSetting(boolean result) {
@@ -174,7 +174,7 @@ public class TestActivity3 extends BaseActivity implements IResponseListenerLite
                 });
             }
             if(v.getId()== R.id.bt_huoqushoushi) {
-                postView("奋达手势关闭\n");
+                postView("Fenda gestures off\n");
                 LmAPILite.SET_HID_FENDA((byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff, new IHIDListener() {
                     @Override
                     public void setHIDSetting(boolean result) {
@@ -195,12 +195,12 @@ public class TestActivity3 extends BaseActivity implements IResponseListenerLite
 
         if(v.getId()==R.id.bt_shuaxinlanyafuwu) {
 
-            postView("刷新蓝牙服务\n");
+            postView("Refresh Bluetooth services\n");
 
         }
         if(v.getId()==R.id.bt_shoushihuoqu) {
 
-            postView("获取手势\n");
+            postView("Get gesture\n");
             LmAPILite.GET_HID_FENDA(new IHIDListener() {
                 @Override
                 public void setHIDSetting(boolean result) {
@@ -209,10 +209,10 @@ public class TestActivity3 extends BaseActivity implements IResponseListenerLite
 
                 @Override
                 public void getHIDSetting(byte sh, byte xh, byte dxz, byte nyn) {
-                    postView("上滑："+sh+"\n");
-                    postView("下滑："+xh+"\n");
-                    postView("打响指："+dxz+"\n");
-                    postView("捏一捏："+nyn+"\n");
+                    postView("Swipe up: "+sh+"\n");
+                    postView("Swipe down: "+xh+"\n");
+                    postView("Snap: "+dxz+"\n");
+                    postView("Pinch: "+nyn+"\n");
                 }
 
                 @Override
@@ -239,25 +239,25 @@ public class TestActivity3 extends BaseActivity implements IResponseListenerLite
             if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
                 switch (mBluetoothDevice.getBondState()) {
                     case BluetoothDevice.BOND_BONDING://正在配对
-                        Log.d("BLEService", "正在配对......===============");
-                        postView("正在配对......===============\n");
+                        Log.d("BLEService", "Pairing......===============");
+                        postView("Pairing......===============\n");
                         break;
                     case BluetoothDevice.BOND_BONDED://配对结束
                         if (initializeBluetooth()) {
-                            Log.d("BLEService", "连接成功    =======");
-                            postView("连接成功    =======\n");
+                            Log.d("BLEService", "Connected    =======");
+                            postView("Connected    =======\n");
                             // sendStatusChange(CONNECT_STATE_SUCCESS);
                             BLEUtils.setMac(mBluetoothDevice.getAddress());
                         } else {
-                            Log.d("BLEService", "连接失败    =======");
-                            postView("连接失败    =======\n");
+                            Log.d("BLEService", "Connection failed    =======");
+                            postView("Connection failed    =======\n");
                             //   removeBond(mBluetoothDevice);
                         }
 
                         break;
                     case BluetoothDevice.BOND_NONE://取消配对/未配对
-                        Log.d("BLEService", "取消配对    =======");
-                        postView("取消配对    =======\n");
+                        Log.d("BLEService", "Pairing cancelled    =======");
+                        postView("Pairing cancelled    =======\n");
 //                        if(autoConnect){
 //                            postView("用户点击取消配对后直连    =======\n");
 //                            BLEUtils.connectLockByBLE(TestActivity3.this, mBluetoothDevice);
@@ -330,7 +330,7 @@ public class TestActivity3 extends BaseActivity implements IResponseListenerLite
             if (code == 7) {
 
                 BLEUtils.setGetToken(true);
-                postView("连接成功    =======\n");
+                postView("Connected    =======\n");
             }
 
     }
@@ -361,7 +361,7 @@ public class TestActivity3 extends BaseActivity implements IResponseListenerLite
 
                     if (state == BLEService.CONNECT_STATE_SUCCESS) {
                         // 连接成功，可能是刷新完成
-                        Log.d(TAG, "蓝牙连接状态：成功");
+                        Log.d(TAG, "Bluetooth status: connected");
 
                     }
                 }

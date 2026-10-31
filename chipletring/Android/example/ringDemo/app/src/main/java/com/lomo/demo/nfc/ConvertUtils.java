@@ -49,7 +49,7 @@ public class ConvertUtils {
     public static byte[] hexString2Bytes(String hexString) {
         int len = hexString.length();
         if (len % 2 != 0) {
-            throw new IllegalArgumentException("长度不是偶数");
+            throw new IllegalArgumentException("Length is not even");
         }
         char[] hexBytes = hexString.toUpperCase().toCharArray();
         byte[] res = new byte[len >>> 1];

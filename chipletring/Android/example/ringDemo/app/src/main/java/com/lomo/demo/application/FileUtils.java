@@ -19,7 +19,7 @@ public class FileUtils {
         try {
             File file = new File(mFilePath);
             if (!file.exists()) {
-                Log.d(TAG, "创建文件: " + mFilePath);
+                Log.d(TAG, "Created file: " + mFilePath);
                 file.getParentFile().mkdirs();
                 file.createNewFile();
             }
@@ -28,7 +28,7 @@ public class FileUtils {
             mRandomAccessFile.write(mContent.getBytes());
             mRandomAccessFile.close();
         } catch (IOException e) {
-            Log.d(TAG, "写入错误: " + e.toString());
+            Log.d(TAG, "Write error: " + e.toString());
         }
     }
     //生成文件
@@ -41,7 +41,7 @@ public class FileUtils {
                 file.createNewFile();
             }
         }catch (IOException e){
-            Log.d(TAG,"生成文件错误: " + e.toString());
+            Log.d(TAG,"File creation error: " + e.toString());
         }
         return file;
     }
@@ -54,7 +54,7 @@ public class FileUtils {
                 file.mkdir();
             }
         }catch (Exception e){
-            Log.d(TAG,"生成文件夹错误: " + e.toString());
+            Log.d(TAG,"Folder creation error: " + e.toString());
         }
     }
 

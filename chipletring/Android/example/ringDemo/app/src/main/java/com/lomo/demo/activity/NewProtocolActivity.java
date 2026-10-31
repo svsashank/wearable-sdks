@@ -87,7 +87,7 @@ public class NewProtocolActivity extends BaseActivity implements  View.OnClickLi
     public void onClick(View view) {
         // ==================== 灯光特效 ====================
         if (view.getId() == R.id.bt_set_light_effect) {
-            postView("\n设置灯光特效");
+            postView("\nSet light effect");
             List<LightEffectBean> lightEffects = new ArrayList<>();
             LightEffectBean effect = new LightEffectBean();
             effect.setEffectIndex(0);
@@ -113,75 +113,75 @@ public class NewProtocolActivity extends BaseActivity implements  View.OnClickLi
                 @Override
                 public void result(List<LightEffectBean> lightEffectBeanList) {
                     if (lightEffectBeanList != null) {
-                        postView("\n获取灯光特效列表，数量: " + lightEffectBeanList.size());
+                        postView("\nLight effects, count: " + lightEffectBeanList.size());
                         for (LightEffectBean e : lightEffectBeanList) {
-                            postView("\n  序号: " + e.getEffectIndex());
-                            postView("\n  第一段-模式: " + e.getFirstMode()
-                                    + ", 循环次数: " + e.getFirstLoopCount()
-                                    + ", 起始亮度: " + e.getFirstStartBrightness()
-                                    + ", 中间亮度: " + e.getFirstMiddleBrightness()
-                                    + ", 结束亮度: " + e.getFirstEndBrightness()
-                                    + ", 上升延时: " + e.getFirstRiseStepDelay() + "ms"
-                                    + ", 下降延时: " + e.getFirstFallStepDelay() + "ms");
-                            postView("\n  第二段-模式: " + e.getSecondMode()
-                                    + ", 循环次数: " + e.getSecondLoopCount()
-                                    + ", 起始亮度: " + e.getSecondStartBrightness()
-                                    + ", 中间亮度: " + e.getSecondMiddleBrightness()
-                                    + ", 结束亮度: " + e.getSecondEndBrightness()
-                                    + ", 上升延时: " + e.getSecondRiseStepDelay() + "ms"
-                                    + ", 下降延时: " + e.getSecondFallStepDelay() + "ms");
+                            postView("\n  #" + e.getEffectIndex());
+                            postView("\n  Part 1 mode: " + e.getFirstMode()
+                                    + ", loops: " + e.getFirstLoopCount()
+                                    + ", start brightness: " + e.getFirstStartBrightness()
+                                    + ", mid brightness: " + e.getFirstMiddleBrightness()
+                                    + ", end brightness: " + e.getFirstEndBrightness()
+                                    + ", rise delay: " + e.getFirstRiseStepDelay() + "ms"
+                                    + ", fall delay: " + e.getFirstFallStepDelay() + "ms");
+                            postView("\n  Part 2 mode: " + e.getSecondMode()
+                                    + ", loops: " + e.getSecondLoopCount()
+                                    + ", start brightness: " + e.getSecondStartBrightness()
+                                    + ", mid brightness: " + e.getSecondMiddleBrightness()
+                                    + ", end brightness: " + e.getSecondEndBrightness()
+                                    + ", rise delay: " + e.getSecondRiseStepDelay() + "ms"
+                                    + ", fall delay: " + e.getSecondFallStepDelay() + "ms");
                         }
                     } else {
-                        postView("\n无灯光特效");
+                        postView("\nNo light effects");
                     }
                 }
 
                 @Override
                 public void setLightEffectResult(boolean success) {
-                    postView("\n设置灯光特效结果: " + (success ? "成功" : "失败"));
+                    postView("\nSet light effect result: " + (success ? "Success" : "Failed"));
                 }
             });
         }
 
         if (view.getId() == R.id.bt_get_light_effect) {
-            postView("\n获取灯光特效");
+            postView("\nGet light effect");
             LmAPILite.GET_LIGHT_EFFECT(new ILightEffectListenerLite() {
                 @Override
                 public void result(List<LightEffectBean> lightEffectBeanList) {
                     if (lightEffectBeanList != null) {
-                        postView("\n获取灯光特效列表，数量: " + lightEffectBeanList.size());
+                        postView("\nLight effects, count: " + lightEffectBeanList.size());
                         for (LightEffectBean e : lightEffectBeanList) {
-                            postView("\n  序号: " + e.getEffectIndex());
-                            postView("\n  第一段-模式: " + e.getFirstMode()
-                                    + ", 循环次数: " + e.getFirstLoopCount()
-                                    + ", 起始亮度: " + e.getFirstStartBrightness()
-                                    + ", 中间亮度: " + e.getFirstMiddleBrightness()
-                                    + ", 结束亮度: " + e.getFirstEndBrightness()
-                                    + ", 上升延时: " + e.getFirstRiseStepDelay() + "ms"
-                                    + ", 下降延时: " + e.getFirstFallStepDelay() + "ms");
-                            postView("\n  第二段-模式: " + e.getSecondMode()
-                                    + ", 循环次数: " + e.getSecondLoopCount()
-                                    + ", 起始亮度: " + e.getSecondStartBrightness()
-                                    + ", 中间亮度: " + e.getSecondMiddleBrightness()
-                                    + ", 结束亮度: " + e.getSecondEndBrightness()
-                                    + ", 上升延时: " + e.getSecondRiseStepDelay() + "ms"
-                                    + ", 下降延时: " + e.getSecondFallStepDelay() + "ms");
+                            postView("\n  #" + e.getEffectIndex());
+                            postView("\n  Part 1 mode: " + e.getFirstMode()
+                                    + ", loops: " + e.getFirstLoopCount()
+                                    + ", start brightness: " + e.getFirstStartBrightness()
+                                    + ", mid brightness: " + e.getFirstMiddleBrightness()
+                                    + ", end brightness: " + e.getFirstEndBrightness()
+                                    + ", rise delay: " + e.getFirstRiseStepDelay() + "ms"
+                                    + ", fall delay: " + e.getFirstFallStepDelay() + "ms");
+                            postView("\n  Part 2 mode: " + e.getSecondMode()
+                                    + ", loops: " + e.getSecondLoopCount()
+                                    + ", start brightness: " + e.getSecondStartBrightness()
+                                    + ", mid brightness: " + e.getSecondMiddleBrightness()
+                                    + ", end brightness: " + e.getSecondEndBrightness()
+                                    + ", rise delay: " + e.getSecondRiseStepDelay() + "ms"
+                                    + ", fall delay: " + e.getSecondFallStepDelay() + "ms");
                         }
                     } else {
-                        postView("\n无灯光特效");
+                        postView("\nNo light effects");
                     }
                 }
 
                 @Override
                 public void setLightEffectResult(boolean success) {
-                    postView("\n设置灯光特效结果: " + (success ? "成功" : "失败"));
+                    postView("\nSet light effect result: " + (success ? "Success" : "Failed"));
                 }
             });
         }
 
         // ==================== 震动特效 ====================
         if (view.getId() == R.id.bt_set_vibration_effect) {
-            postView("\n设置震动特效");
+            postView("\nSet vibration effect");
             List<VibrationEffectBean> vibrationEffects = new ArrayList<>();
             VibrationEffectBean effect = new VibrationEffectBean();
             effect.setEffectIndex((byte) 0);
@@ -195,98 +195,98 @@ public class NewProtocolActivity extends BaseActivity implements  View.OnClickLi
                 @Override
                 public void result(List<VibrationEffectBean> vibrationEffectBeanList) {
                     if (vibrationEffectBeanList != null) {
-                        postView("\n获取震动特效列表，数量: " + vibrationEffectBeanList.size());
+                        postView("\nVibration effects, count: " + vibrationEffectBeanList.size());
                         for (VibrationEffectBean e : vibrationEffectBeanList) {
-                            postView("\n  序号: " + e.getEffectIndex()
-                                    + ", 循环次数: " + e.getLoopCount()
-                                    + ", 震动强度: " + e.getIntensity()
-                                    + ", 震动延时: " + e.getVibrationDelay() + "ms"
-                                    + ", 暂停延时: " + e.getPauseDelay() + "ms");
+                            postView("\n  #" + e.getEffectIndex()
+                                    + ", loops: " + e.getLoopCount()
+                                    + ", strength: " + e.getIntensity()
+                                    + ", vibrate delay: " + e.getVibrationDelay() + "ms"
+                                    + ", pause delay: " + e.getPauseDelay() + "ms");
                         }
                     } else {
-                        postView("\n无震动特效");
+                        postView("\nNo vibration effects");
                     }
                 }
 
                 @Override
                 public void setVibrationEffectResult(boolean success) {
-                    postView("\n设置震动特效结果: " + (success ? "成功" : "失败"));
+                    postView("\nSet vibration effect result: " + (success ? "Success" : "Failed"));
                 }
             });
         }
 
         if (view.getId() == R.id.bt_get_vibration_effect) {
-            postView("\n获取震动特效");
+            postView("\nGet vibration effect");
             LmAPILite.GET_VIBRATION_EFFECT(new IVibrationEffectListenerLite() {
                 @Override
                 public void result(List<VibrationEffectBean> vibrationEffectBeanList) {
                     if (vibrationEffectBeanList != null) {
-                        postView("\n获取震动特效列表，数量: " + vibrationEffectBeanList.size());
+                        postView("\nVibration effects, count: " + vibrationEffectBeanList.size());
                         for (VibrationEffectBean e : vibrationEffectBeanList) {
-                            postView("\n  序号: " + e.getEffectIndex()
-                                    + ", 循环次数: " + e.getLoopCount()
-                                    + ", 震动强度: " + e.getIntensity()
-                                    + ", 震动延时: " + e.getVibrationDelay() + "ms"
-                                    + ", 暂停延时: " + e.getPauseDelay() + "ms");
+                            postView("\n  #" + e.getEffectIndex()
+                                    + ", loops: " + e.getLoopCount()
+                                    + ", strength: " + e.getIntensity()
+                                    + ", vibrate delay: " + e.getVibrationDelay() + "ms"
+                                    + ", pause delay: " + e.getPauseDelay() + "ms");
                         }
                     } else {
-                        postView("\n无震动特效");
+                        postView("\nNo vibration effects");
                     }
                 }
 
                 @Override
                 public void setVibrationEffectResult(boolean success) {
-                    postView("\n设置震动特效结果: " + (success ? "成功" : "失败"));
+                    postView("\nSet vibration effect result: " + (success ? "Success" : "Failed"));
                 }
             });
         }
 
         // ==================== 戒指控制 ====================
         if (view.getId() == R.id.bt_start_find_ring) {
-            postView("\n启动查找戒指");
+            postView("\nStart find-ring");
             LmAPILite.START_FIND_RING();
         }
 
         if (view.getId() == R.id.bt_stop_find_ring) {
-            postView("\n结束查找戒指");
+            postView("\nStop find-ring");
             LmAPILite.STOP_FIND_RING();
         }
 
         if (view.getId() == R.id.bt_start_dnd) {
-            postView("\n启动勿扰模式");
+            postView("\nStart do-not-disturb");
             LmAPILite.START_DND_MODE();
         }
 
         if (view.getId() == R.id.bt_stop_dnd) {
-            postView("\n结束勿扰模式");
+            postView("\nStop do-not-disturb");
             LmAPILite.STOP_DND_MODE();
         }
 
         if (view.getId() == R.id.bt_start_always_on) {
-            postView("\n启动常亮模式");
+            postView("\nStart always-on");
             LmAPILite.START_ALWAYS_ON();
         }
 
         if (view.getId() == R.id.bt_stop_always_on) {
-            postView("\n结束常亮模式");
+            postView("\nStop always-on");
             LmAPILite.STOP_ALWAYS_ON();
         }
 
         if (view.getId() == R.id.bt_start_light_vibration) {
-            postView("\n启动灯光震动特效");
+            postView("\nStart light+vibration effect");
             byte vibrationIndex = 0; // 震动特效序号
             byte lightIndex = 0; // 灯光特效序号
             LmAPILite.START_LIGHT_VIBRATION_EFFECT(vibrationIndex, lightIndex);
         }
 
         if (view.getId() == R.id.bt_stop_light_vibration) {
-            postView("\n结束灯光震动特效");
+            postView("\nStop light+vibration effect");
             LmAPILite.STOP_LIGHT_VIBRATION_EFFECT();
         }
 
         // ==================== 心率压力报警参数 ====================
         if (view.getId() == R.id.bt_set_alarm_param) {
-            postView("\n设置心率压力报警参数");
+            postView("\nSet HR/stress alarm thresholds");
             AlarmParamBean alarmParam = new AlarmParamBean();
             alarmParam.setAlarmEnable((byte) 0x03); // 允许心率压力报警
             alarmParam.setHeartRateThreshold((byte) 120); // 心率阈值120
@@ -295,11 +295,11 @@ public class NewProtocolActivity extends BaseActivity implements  View.OnClickLi
             alarmParam.setRunDelayMinutes((byte) 3); // 跑步后3分钟报警
 
             LmAPILite.SET_ALARM_PARAM(alarmParam);
-            postView("\n已发送设置报警参数指令");
+            postView("\nSent alarm-threshold command");
         }
 
         if (view.getId() == R.id.bt_get_alarm_param) {
-            postView("\n读取心率压力报警参数");
+            postView("\nRead HR/stress alarm thresholds");
             LmAPILite.GET_ALARM_PARAM(new IAlarmParamListenerLite() {
                 @Override
                 public void result(AlarmParamBean alarmParamBean) {
@@ -307,23 +307,23 @@ public class NewProtocolActivity extends BaseActivity implements  View.OnClickLi
                         String alarmEnableStr = "";
                         switch (alarmParamBean.getAlarmEnable()) {
                             case 0x00:
-                                alarmEnableStr = "禁止报警";
+                                alarmEnableStr = "Alarms off";
                                 break;
                             case 0x01:
-                                alarmEnableStr = "允许心率报警";
+                                alarmEnableStr = "HR alarm on";
                                 break;
                             case 0x02:
-                                alarmEnableStr = "允许压力报警";
+                                alarmEnableStr = "Stress alarm on";
                                 break;
                             case 0x03:
-                                alarmEnableStr = "允许心率压力报警";
+                                alarmEnableStr = "HR + stress alarms on";
                                 break;
                         }
-                        postView("\n报警功能: " + alarmEnableStr);
-                        postView("\n心率阈值: " + alarmParamBean.getHeartRateThreshold());
-                        postView("\n压力阈值: " + alarmParamBean.getStressThreshold());
-                        postView("\n走路延时: " + alarmParamBean.getWalkDelayMinutes() + "分钟");
-                        postView("\n跑步延时: " + alarmParamBean.getRunDelayMinutes() + "分钟");
+                        postView("\nAlarm: " + alarmEnableStr);
+                        postView("\nHR threshold: " + alarmParamBean.getHeartRateThreshold());
+                        postView("\nStress threshold: " + alarmParamBean.getStressThreshold());
+                        postView("\nWalking delay: " + alarmParamBean.getWalkDelayMinutes() + "min");
+                        postView("\nRunning delay: " + alarmParamBean.getRunDelayMinutes() + "min");
                     }
                 }
 
@@ -332,7 +332,7 @@ public class NewProtocolActivity extends BaseActivity implements  View.OnClickLi
 
         // ==================== 闹钟设置 ====================
         if (view.getId() == R.id.bt_set_alarm_clock) {
-            postView("\n设置闹钟");
+            postView("\nSet alarm clock");
             List<AlarmClockBean> setAlarmClockData = new ArrayList<>();
          for (int i = 0; i < 5; i++) {
              AlarmClockBean alarmClockBean = new AlarmClockBean();
@@ -374,27 +374,27 @@ public class NewProtocolActivity extends BaseActivity implements  View.OnClickLi
 
                 }
             });
-            postView("\n已发送设置闹钟指令");
+            postView("\nSent alarm-clock command");
         }
 
         if (view.getId() == R.id.bt_get_alarm_clock) {
-            postView("\n获取闹钟");
+            postView("\nGet alarm clock");
             LmAPILite.GET_ALARM_CLOCK(new IAlarmClockListenerLite() {
                 @Override
                 public void result(List<AlarmClockBean> alarmClockBeanList) {
                     if (alarmClockBeanList != null && !alarmClockBeanList.isEmpty()) {
-                        postView("\n获取到闹钟数量: " + alarmClockBeanList.size());
+                        postView("\nAlarm clocks: " + alarmClockBeanList.size());
                         for (AlarmClockBean alarmClockBean : alarmClockBeanList) {
                             if (alarmClockBean.getTime() > 0) {
-                                postView("\n  时间戳: " + alarmClockBean.getTime()
-                                        + ", 重复类型: " + alarmClockBean.getRepetitiveType()
-                                        + ", 震动效果: " + alarmClockBean.getVibrationEffect()
-                                        + ", 开关: " + alarmClockBean.getOnOrOff()
-                                        + ", 灯光效果: " + alarmClockBean.getLightingEffect());
+                                postView("\n  Timestamp: " + alarmClockBean.getTime()
+                                        + ", repeat: " + alarmClockBean.getRepetitiveType()
+                                        + ", vibration: " + alarmClockBean.getVibrationEffect()
+                                        + ", on/off: " + alarmClockBean.getOnOrOff()
+                                        + ", light: " + alarmClockBean.getLightingEffect());
                             }
                         }
                     } else {
-                        postView("\n无闹钟数据");
+                        postView("\nNo alarm clocks");
                     }
                 }
 
@@ -404,7 +404,7 @@ public class NewProtocolActivity extends BaseActivity implements  View.OnClickLi
 
                 @Override
                 public void setAlarmResult(boolean success) {
-                    postView("\n设置闹钟结果: " + (success ? "成功" : "失败"));
+                    postView("\nSet alarm clock result: " + (success ? "Success" : "Failed"));
                 }
 
                 @Override
@@ -415,27 +415,27 @@ public class NewProtocolActivity extends BaseActivity implements  View.OnClickLi
 
         // ==================== 电量计信息 ====================
         if (view.getId() == R.id.bt_get_electricity_meter) {
-            postView("\n读取电量计信息");
+            postView("\nRead fuel-gauge info");
             LmAPILite.GET_ELECTRICITY_METER(new IElectricityMeterListenerLite() {
                 @Override
                 public void battery(int power, int voltage, int current, int temperature, int cyclesNumber, int health) {
-                    postView("\n电量: " + power + "%");
-                    postView("\n电压: " + voltage + "mV");
-                    postView("\n电流: " + current + "mA");
-                    postView("\n温度: " + temperature + "℃");
-                    postView("\n循环次数: " + cyclesNumber);
-                    postView("\n健康状态: " + health + "%");
+                    postView("\nBattery: " + power + "%");
+                    postView("\nVoltage: " + voltage + "mV");
+                    postView("\nCurrent: " + current + "mA");
+                    postView("\nTemperature: " + temperature + "℃");
+                    postView("\nCycles: " + cyclesNumber);
+                    postView("\nHealth: " + health + "%");
                 }
             });
         }
 
         // ==================== 血氧模式 ====================
         if (view.getId() == R.id.bt_set_blood_oxygen_mode) {
-            postView("\n设置血氧模式: 打开");
+            postView("\nSet SpO2 mode: on");
             LmAPILite.SET_BLOOD_OXYGEN_MODE(1, new IBloodOxygenModeListenerLite() {
                 @Override
                 public void setBloodOxygenModeResult(boolean success) {
-                    postView("\n设置血氧模式结果: " + (success ? "成功" : "失败"));
+                    postView("\nSet SpO2 mode result: " + (success ? "Success" : "Failed"));
                 }
 
                 @Override
@@ -445,7 +445,7 @@ public class NewProtocolActivity extends BaseActivity implements  View.OnClickLi
         }
 
         if (view.getId() == R.id.bt_get_blood_oxygen_mode) {
-            postView("\n读取血氧模式");
+            postView("\nRead SpO2 mode");
             LmAPILite.GET_BLOOD_OXYGEN_MODE(new IBloodOxygenModeListenerLite() {
                 @Override
                 public void setBloodOxygenModeResult(boolean success) {
@@ -453,18 +453,18 @@ public class NewProtocolActivity extends BaseActivity implements  View.OnClickLi
 
                 @Override
                 public void getBloodOxygenModeResult(int mode) {
-                    postView("\n当前血氧模式: " + (mode == 1 ? "打开" : "关闭"));
+                    postView("\nCurrent SpO2 mode: " + (mode == 1 ? "On" : "Off"));
                 }
             });
         }
 
         // ==================== 血氧采集周期 ====================
         if (view.getId() == R.id.bt_set_blood_oxygen_collection) {
-            postView("\n设置血氧采集周期: 非睡眠=2, 睡眠=4");
+            postView("\nSet SpO2 interval: awake=2, sleep=4");
             LmAPILite.SET_BLOOD_OXYGEN_COLLECTION(2, 4, new IBloodOxygenCollectionListenerLite() {
                 @Override
                 public void setBloodOxygenCollectionResult(boolean success) {
-                    postView("\n设置采集周期结果: " + (success ? "成功" : "失败"));
+                    postView("\nSet interval result: " + (success ? "Success" : "Failed"));
                 }
 
                 @Override
@@ -474,7 +474,7 @@ public class NewProtocolActivity extends BaseActivity implements  View.OnClickLi
         }
 
         if (view.getId() == R.id.bt_get_blood_oxygen_collection) {
-            postView("\n读取血氧采集周期");
+            postView("\nRead SpO2 interval");
             LmAPILite.GET_BLOOD_OXYGEN_COLLECTION(new IBloodOxygenCollectionListenerLite() {
                 @Override
                 public void setBloodOxygenCollectionResult(boolean success) {
@@ -482,8 +482,8 @@ public class NewProtocolActivity extends BaseActivity implements  View.OnClickLi
 
                 @Override
                 public void getBloodOxygenCollectionResult(int nonSleepMultiplier, int sleepMultiplier) {
-                    postView("\n非睡眠倍数: " + nonSleepMultiplier);
-                    postView("\n睡眠倍数: " + sleepMultiplier);
+                    postView("\nAwake multiplier: " + nonSleepMultiplier);
+                    postView("\nSleep multiplier: " + sleepMultiplier);
                 }
             });
         }

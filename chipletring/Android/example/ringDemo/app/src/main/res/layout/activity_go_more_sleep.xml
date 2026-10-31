@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="GoMore睡眠算法"
+            android:text="⛔ GoMore sleep (cloud)"
             android:textSize="18sp"
             android:layout_centerInParent="true"
             android:textColor="@color/white"/>
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="请先获取睡眠数据"
+                android:text="Get sleep data first"
                 android:textColor="@color/white" />
         </RelativeLayout>
         <com.lomo.demo.views.MyScaleView
@@ -116,7 +116,7 @@
                 android:textSize="8sp"
                 android:layout_centerVertical="true"
                 android:textColor="@color/text_gray"
-                android:text="入睡" />
+                android:text="Fell asleep" />
 
 
             <TextView
@@ -134,7 +134,7 @@
                 android:textSize="8sp"
                 android:layout_centerVertical="true"
                 android:textColor="@color/text_gray"
-                android:text="清醒" />
+                android:text="Awake" />
         </LinearLayout>
     </LinearLayout>
 
@@ -144,7 +144,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="数据区域"
+        android:text="Output"
         android:scrollbars="vertical"
         android:padding="10dp"
         android:lineSpacingExtra="5dp"
@@ -161,7 +161,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="5dp"
             android:layout_height="30dp"
-            android:text="获取睡眠数据"
+            android:text="Get sleep data"
             android:textSize="14sp"
             android:textColor="@color/white"
             android:background="@drawable/button_bg_state"/>
@@ -170,7 +170,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="5dp"
             android:layout_height="30dp"
-            android:text="返回前一页"
+            android:text="Back"
             android:textSize="14sp"
             android:textColor="@color/white"
             android:background="@drawable/button_bg_state"/>

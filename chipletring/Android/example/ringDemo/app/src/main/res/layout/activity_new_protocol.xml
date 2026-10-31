@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="新增协议测试"
+            android:text="New protocol test"
             android:textSize="18sp"
             android:layout_centerInParent="true"
             android:textColor="@color/white"/>
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="数据区域"
+        android:text="Output"
         android:scrollbars="vertical"
         android:padding="10dp"
         android:lineSpacingExtra="5dp"
@@ -50,7 +50,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="设置灯光特效"
+                android:text="Set light effect"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -59,7 +59,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="获取灯光特效"
+                android:text="Get light effect"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -76,7 +76,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="设置震动特效"
+                android:text="Set vibration effect"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -85,7 +85,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="获取震动特效"
+                android:text="Get vibration effect"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -102,7 +102,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="启动查找戒指"
+                android:text="Start find-ring"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -111,7 +111,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="结束查找戒指"
+                android:text="Stop find-ring"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -127,7 +127,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="启动勿扰模式"
+                android:text="Start do-not-disturb"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -136,7 +136,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="结束勿扰模式"
+                android:text="Stop do-not-disturb"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -152,7 +152,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="启动常亮模式"
+                android:text="Start always-on"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -161,7 +161,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="结束常亮模式"
+                android:text="Stop always-on"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -177,7 +177,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="启动灯光震动特效"
+                android:text="Start light+vibration effect"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -186,7 +186,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="结束灯光震动特效"
+                android:text="Stop light+vibration effect"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -203,7 +203,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="设置报警参数"
+                android:text="Set alarm thresholds"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -212,7 +212,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="读取报警参数"
+                android:text="Read alarm thresholds"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -229,7 +229,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="设置闹钟"
+                android:text="Set alarm clock"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -238,7 +238,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="获取闹钟"
+                android:text="Get alarm clock"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -255,7 +255,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="读取勿扰模式(0x8B/0x08)"
+                android:text="Read DND mode (0x8B/0x08)"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -272,7 +272,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="设置报警上传监听(0x8C/0x03)"
+                android:text="Listen for alarm uploads (0x8C/0x03)"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -289,7 +289,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="读取电量计信息(0x12/0x05)"
+                android:text="Read fuel-gauge info (0x12/0x05)"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -306,7 +306,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="设置血氧模式(0x37/0x29)"
+                android:text="Set SpO2 mode (0x37/0x29)"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -315,7 +315,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="读取血氧模式(0x37/0x2A)"
+                android:text="Read SpO2 mode (0x37/0x2A)"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -332,7 +332,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="设置血氧采集周期(0x37/0x2B)"
+                android:text="Set SpO2 interval (0x37/0x2B)"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -341,7 +341,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="读取血氧采集周期(0x37/0x2C)"
+                android:text="Read SpO2 interval (0x37/0x2C)"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>

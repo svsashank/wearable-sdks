@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="测试DEMO"
+            android:text="Ring test"
             android:textSize="18sp"
             android:layout_centerInParent="true"
             android:textColor="@color/white"/>
@@ -24,7 +24,7 @@
             android:id="@+id/tv_connect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="连接"
+            android:text="Connect"
             android:textSize="14sp"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="数据区域"
+        android:text="Output"
         android:scrollbars="vertical"
         android:padding="10dp"
         android:lineSpacingExtra="5dp"
@@ -58,7 +58,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="绑定指令(清空历史)"
+                android:text="⛔ Bind (WIPES HISTORY)"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -68,7 +68,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="连接指令"
+                android:text="Connect command (shows capabilities)"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -77,7 +77,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="刷新指令"
+                android:text="Refresh"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -93,7 +93,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="同步时间"
+                android:text="Sync time"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -102,7 +102,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="读取时间"
+                android:text="Read time"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -120,7 +120,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="获取电量"
+                android:text="Battery"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -129,7 +129,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="获取充电状态"
+                android:text="Charging status"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -138,7 +138,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="软件版本信息"
+                android:text="Firmware version"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -153,7 +153,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="硬件版本信息"
+                android:text="Hardware version"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -162,7 +162,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="清除步数"
+                android:text="⛔ Clear steps"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -171,7 +171,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="获取步数"
+                android:text="Get steps"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -187,7 +187,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="心率测量"
+                android:text="Measure heart rate"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -196,7 +196,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="血氧测量"
+                android:text="Measure SpO2"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -211,7 +211,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="读取所有记录"
+                android:text="Read all history"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -220,7 +220,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="测量温度"
+                android:text="Measure temperature"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -235,7 +235,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="设置序列号"
+                android:text="⛔ Set serial number"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -244,7 +244,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="获取序列号"
+                android:text="Get serial number"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -263,7 +263,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:hint="周期(秒)"
+                android:hint="Period (sec)"
                 android:inputType="number"
                 android:textSize="12sp"
                 android:gravity="center"
@@ -275,7 +275,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="设置采集周期"
+                android:text="⛔ Set collection interval"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -284,7 +284,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="获取采集周期"
+                android:text="Get collection interval"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -305,7 +305,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:hint="蓝牙名"
+                android:hint="Bluetooth name"
                 android:textSize="12sp"
                 android:gravity="center"
                 android:paddingTop="2dp"
@@ -316,7 +316,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="设置蓝牙名"
+                android:text="⛔ Set Bluetooth name"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -326,7 +326,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="获取蓝牙名"
+                android:text="Get Bluetooth name"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -343,7 +343,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:hint="年龄0-99"
+                android:hint="Age 0-99"
                 android:inputType="number"
                 android:textSize="11sp"
                 android:gravity="center"
@@ -356,7 +356,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:hint="性别0/1"
+                android:hint="Sex 0/1"
                 android:inputType="number"
                 android:textSize="11sp"
                 android:gravity="center"
@@ -369,7 +369,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:hint="身高100-220"
+                android:hint="Height 100-220"
                 android:inputType="number"
                 android:textSize="11sp"
                 android:gravity="center"
@@ -382,7 +382,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:hint="体重10-150"
+                android:hint="Weight 10-150"
                 android:inputType="number"
                 android:textSize="11sp"
                 android:gravity="center"
@@ -401,7 +401,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="设置Gomore信息"
+                android:text="⛔ Set GoMore info"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -410,7 +410,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="获取Gomore信息"
+                android:text="⛔ Get GoMore info"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -420,7 +420,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="获取gomore睡眠"
+                android:text="⛔ GoMore sleep"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -438,7 +438,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="跳转到下一页"
+                android:text="Next page"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -456,7 +456,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="勇芯测试人员专用固件预发布OTA功能"
+                android:text="⛔ FIRMWARE UPDATE (OTA) – NEVER PRESS"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -472,7 +472,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="辉扬线性马达"
+                android:text="Linear motor (Huiyang)"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -483,7 +483,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="新协议测试"
+                android:text="New protocol test"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>
@@ -493,7 +493,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="touch设置"
+                android:text="Touch settings"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg_state"/>

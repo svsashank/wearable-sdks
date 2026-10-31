@@ -340,7 +340,7 @@ public class CsvWriter {
     private static void handleError(Context context, Exception e) {
         e.printStackTrace();
         if (context != null) {
-            Toast.makeText(context, "CSV写入失败: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "CSV write failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -88,7 +88,7 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
      */
     private void addVibrationConfigRow(int defaultIntensity, int defaultTime) {
         if (configRowViews.size() >= MAX_CONFIG_ROWS) {
-            postView("\n最多添加" + MAX_CONFIG_ROWS + "组配置");
+            postView("\nMax " + MAX_CONFIG_ROWS + " configs");
             return;
         }
 
@@ -102,12 +102,12 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
         int index = configRowViews.size();
 
         TextView label = new TextView(this);
-        label.setText("配置" + index + ":");
+        label.setText("Config" + index + ":");
         label.setTextSize(12);
         row.addView(label);
 
         EditText etIntensity = new EditText(this);
-        etIntensity.setHint("强度0~255");
+        etIntensity.setHint("Strength 0~255");
         etIntensity.setInputType(InputType.TYPE_CLASS_NUMBER);
         etIntensity.setText(String.valueOf(defaultIntensity));
         etIntensity.setTextSize(12);
@@ -116,7 +116,7 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
         row.addView(etIntensity);
 
         EditText etTime = new EditText(this);
-        etTime.setHint("时间(5ms)");
+        etTime.setHint("Time (5 ms)");
         etTime.setInputType(InputType.TYPE_CLASS_NUMBER);
         etTime.setText(String.valueOf(defaultTime));
         etTime.setTextSize(12);
@@ -167,13 +167,13 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
 
         // ==================== 读取振动配置（Subcmd=0x06）====================
         if (id == R.id.bt_get_vibration_config) {
-            postView("\n读取振动配置");
+            postView("\nRead vibration config");
             LmAPILite.GET_VIBRATION_CONFIG(new IVibrationConfigListenerLite() {
                 @Override
                 public void getVibrationConfigResult(int configCount, List<int[]> configs) {
-                    postView("\n振动配置数量: " + configCount);
+                    postView("\nVibration configs: " + configCount);
                     for (int i = 0; i < configs.size(); i++) {
-                        postView("\n  配置" + i + ": 强度=" + configs.get(i)[0] + ", 时间=" + (configs.get(i)[1] * 5) + "ms");
+                        postView("\n  Config" + i + ": strength=" + configs.get(i)[0] + ", time=" + (configs.get(i)[1] * 5) + "ms");
                     }
                 }
 
@@ -186,9 +186,9 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
 
         // ==================== 设置振动配置（Subcmd=0x07）====================
         if (id == R.id.bt_set_vibration_config) {
-            postView("\n设置振动配置");
+            postView("\nSet vibration config");
             if (configRowViews.isEmpty()) {
-                postView("\n请先添加至少1组配置");
+                postView("\nAdd at least 1 config first");
                 return;
             }
             List<int[]> configList = new ArrayList<>();
@@ -206,18 +206,18 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
 
                 @Override
                 public void setVibrationConfigResult(boolean success) {
-                    postView("\n设置振动配置结果: " + (success ? "成功" : "失败"));
+                    postView("\nSet vibration config result: " + (success ? "Success" : "Failed"));
                 }
             });
         }
 
         // ==================== 立即振动（Subcmd=0x04）====================
         if (id == R.id.bt_immediate_vibration) {
-            postView("\n立即振动（强力振动）");
+            postView("\nVibrate now (strong)");
             LmAPILite.IMMEDIATE_VIBRATION(0x01, new IVibrationControlListenerLite() {
                 @Override
                 public void onImmediateVibrationResult(boolean success) {
-                    postView("\n立即振动结果: " + (success ? "成功" : "失败"));
+                    postView("\nVibrate now result: " + (success ? "Success" : "Failed"));
                 }
 
                 @Override
@@ -229,7 +229,7 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
 
         // ==================== 停止振动（Subcmd=0x05）====================
         if (id == R.id.bt_stop_vibration) {
-            postView("\n停止振动");
+            postView("\nStop vibration");
             LmAPILite.STOP_VIBRATION(new IVibrationControlListenerLite() {
                 @Override
                 public void onImmediateVibrationResult(boolean success) {
@@ -238,18 +238,18 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
 
                 @Override
                 public void onStopVibrationResult(boolean success) {
-                    postView("\n停止振动结果: " + (success ? "成功" : "失败"));
+                    postView("\nStop vibration result: " + (success ? "Success" : "Failed"));
                 }
             });
         }
 
         // ==================== 读取目标值（Subcmd=0x08）====================
         if (id == R.id.bt_get_target) {
-            postView("\n读取目标值");
+            postView("\nRead target");
             LmAPILite.GET_LINEAR_MOTOR_TARGET(new ILinearMotorTargetListenerLite() {
                 @Override
                 public void getTargetResult(int target) {
-                    postView("\n目标值: " + target);
+                    postView("\nTarget: " + target);
                 }
 
                 @Override
@@ -261,7 +261,7 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
 
         // ==================== 设置目标值（Subcmd=0x09）====================
         if (id == R.id.bt_set_target) {
-            postView("\n设置目标值");
+            postView("\nSet target");
             int target = TextUtils.isEmpty(etTargetValue.getText()) ? 500 : Integer.parseInt(etTargetValue.getText().toString());  // uint32_t 目标值
 
             LmAPILite.SET_LINEAR_MOTOR_TARGET(target, new ILinearMotorTargetListenerLite() {
@@ -272,18 +272,18 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
 
                 @Override
                 public void setTargetResult(boolean success) {
-                    postView("\n设置目标值结果: " + (success ? "成功" : "失败"));
+                    postView("\nSet target result: " + (success ? "Success" : "Failed"));
                 }
             });
         }
 
         // ==================== 读取计数值（Subcmd=0x0A）====================
         if (id == R.id.bt_get_count) {
-            postView("\n读取计数值");
+            postView("\nRead count");
             LmAPILite.GET_LINEAR_MOTOR_COUNT(new ILinearMotorCountListenerLite() {
                 @Override
                 public void onCountResult(int count) {
-                    postView("\n计数值: " + count);
+                    postView("\nCount: " + count);
                 }
 
                 @Override
@@ -295,7 +295,7 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
 
         // ==================== 清空计数值（Subcmd=0x0B）====================
         if (id == R.id.bt_clear_count) {
-            postView("\n清空计数值");
+            postView("\nClear count");
             LmAPILite.CLEAR_LINEAR_MOTOR_COUNT(new ILinearMotorCountListenerLite() {
                 @Override
                 public void onCountResult(int count) {
@@ -304,18 +304,18 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
 
                 @Override
                 public void onClearResult(boolean success) {
-                    postView("\n清空计数值结果: " + (success ? "成功" : "失败"));
+                    postView("\nClear count result: " + (success ? "Success" : "Failed"));
                 }
             });
         }
 
         // ==================== 设置计数值监听器（接收实时推送）====================
         if (id == R.id.bt_set_count_listener) {
-            postView("\n设置计数值监听器（接收实时推送）");
+            postView("\nSet count listener (live push)");
             LmAPILite.SET_LINEAR_MOTOR_COUNT_LISTENER(new ILinearMotorCountListenerLite() {
                 @Override
                 public void onCountResult(int count) {
-                    postView("\n[实时推送] 计数值: " + count);
+                    postView("\n[Live] count: " + count);
                 }
 
                 @Override
@@ -328,11 +328,11 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
         // ==================== 立即振动（按配置，Subcmd=0x0C）-光之萤火 ====================
         if (id == R.id.bt_immediate_vibration_by_config) {
             int configIndex = TextUtils.isEmpty(etVibrationConfigIndex.getText()) ? 0 : Integer.parseInt(etVibrationConfigIndex.getText().toString());
-            postView("\n立即振动（按第" + configIndex + "个配置）");
+            postView("\nVibrate now (config #" + configIndex + ")");
             LmAPILite.IMMEDIATE_VIBRATION_BY_CONFIG(configIndex, new IConfigVibrationControlListenerLite() {
                 @Override
                 public void onConfigImmediateVibrationResult(boolean success) {
-                    postView("\n立即振动（按配置）结果: " + (success ? "成功" : "失败"));
+                    postView("\nVibrate by config result: " + (success ? "Success" : "Failed"));
                 }
 
                 @Override
@@ -344,7 +344,7 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
 
         // ==================== 停止振动（Subcmd=0x0D）-光之萤火 ====================
         if (id == R.id.bt_stop_vibration_by_config) {
-            postView("\n停止振动（按配置）");
+            postView("\nStop vibration (by config)");
             LmAPILite.STOP_VIBRATION_BY_CONFIG(new IConfigVibrationControlListenerLite() {
                 @Override
                 public void onConfigImmediateVibrationResult(boolean success) {
@@ -353,7 +353,7 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
 
                 @Override
                 public void onConfigStopVibrationResult(boolean success) {
-                    postView("\n停止振动（按配置）结果: " + (success ? "成功" : "失败"));
+                    postView("\nStop vibration (by config) result: " + (success ? "Success" : "Failed"));
                 }
             });
         }
@@ -362,14 +362,14 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
         if (id == R.id.bt_set_min_count_interval) {
             int interval = TextUtils.isEmpty(etMinCountInterval.getText()) ? 12 : Integer.parseInt(etMinCountInterval.getText().toString());
             if (interval < 12 || interval > 100) {
-                postView("\n最小计数间隔取值范围为12~100");
+                postView("\nMin count interval range is 12~100");
                 return;
             }
-            postView("\n配置最小计数间隔: " + interval);
+            postView("\nSet min count interval: " + interval);
             LmAPILite.SET_MIN_COUNT_INTERVAL(interval, new IMinCountIntervalListenerLite() {
                 @Override
                 public void setMinCountIntervalResult(boolean success) {
-                    postView("\n配置最小计数间隔结果: " + (success ? "成功" : "失败"));
+                    postView("\nSet min count interval result: " + (success ? "Success" : "Failed"));
                 }
 
                 @Override
@@ -381,7 +381,7 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
 
         // ==================== 读取最小计数间隔（Subcmd=0x0F）-光之萤火 ====================
         if (id == R.id.bt_get_min_count_interval) {
-            postView("\n读取最小计数间隔");
+            postView("\nRead min count interval");
             LmAPILite.GET_MIN_COUNT_INTERVAL(new IMinCountIntervalListenerLite() {
                 @Override
                 public void setMinCountIntervalResult(boolean success) {
@@ -390,7 +390,7 @@ public class LinearMotorActivity extends BaseActivity implements View.OnClickLis
 
                 @Override
                 public void getMinCountIntervalResult(int interval) {
-                    postView("\n最小计数间隔: " + interval);
+                    postView("\nMin count interval: " + interval);
                 }
             });
         }

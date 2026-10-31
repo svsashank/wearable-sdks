@@ -44,11 +44,11 @@ public class TouchSettingActivity extends BaseActivity implements View.OnClickLi
         // ==================== 设置Touch空置时间（Subcmd=0x05）====================
         if (id == R.id.bt_set_touch_idle_time) {
             int idleTime = TextUtils.isEmpty(etTouchIdleTime.getText()) ? 60 : Integer.parseInt(etTouchIdleTime.getText().toString());
-            postView("\n设置空置时间: " + idleTime);
+            postView("\nSet idle time: " + idleTime);
             LmAPILite.SET_TOUCH_IDLE_TIME(idleTime, new ITouchControlListenerLite() {
                 @Override
                 public void onSetIdleTimeResult(boolean success) {
-                    postView("\n设置空置时间结果: " + (success ? "成功" : "失败"));
+                    postView("\nSet idle time result: " + (success ? "Success" : "Failed"));
                 }
 
                 @Override
@@ -70,7 +70,7 @@ public class TouchSettingActivity extends BaseActivity implements View.OnClickLi
 
         // ==================== 读取Touch空置时间（Subcmd=0x06）====================
         if (id == R.id.bt_get_touch_idle_time) {
-            postView("\n读取空置时间");
+            postView("\nRead idle time");
             LmAPILite.GET_TOUCH_IDLE_TIME(new ITouchControlListenerLite() {
                 @Override
                 public void onSetIdleTimeResult(boolean success) {
@@ -79,7 +79,7 @@ public class TouchSettingActivity extends BaseActivity implements View.OnClickLi
 
                 @Override
                 public void onGetIdleTimeResult(int idleTime) {
-                    postView("\n空置时间: " + idleTime);
+                    postView("\nIdle time: " + idleTime);
                 }
 
                 @Override
@@ -96,7 +96,7 @@ public class TouchSettingActivity extends BaseActivity implements View.OnClickLi
 
         // ==================== 休眠Touch（Subcmd=0x07）====================
         if (id == R.id.bt_sleep_touch) {
-            postView("\n休眠Touch");
+            postView("\nSleep touch");
             LmAPILite.SLEEP_TOUCH(new ITouchControlListenerLite() {
                 @Override
                 public void onSetIdleTimeResult(boolean success) {
@@ -110,7 +110,7 @@ public class TouchSettingActivity extends BaseActivity implements View.OnClickLi
 
                 @Override
                 public void onSleepResult(boolean success) {
-                    postView("\n休眠Touch结果: " + (success ? "成功" : "失败"));
+                    postView("\nSleep touch result: " + (success ? "Success" : "Failed"));
                 }
 
                 @Override
@@ -122,7 +122,7 @@ public class TouchSettingActivity extends BaseActivity implements View.OnClickLi
 
         // ==================== 唤醒Touch（Subcmd=0x08）====================
         if (id == R.id.bt_wakeup_touch) {
-            postView("\n唤醒Touch");
+            postView("\nWake touch");
             LmAPILite.WAKEUP_TOUCH(new ITouchControlListenerLite() {
                 @Override
                 public void onSetIdleTimeResult(boolean success) {
@@ -141,7 +141,7 @@ public class TouchSettingActivity extends BaseActivity implements View.OnClickLi
 
                 @Override
                 public void onWakeupResult(boolean success) {
-                    postView("\n唤醒Touch结果: " + (success ? "成功" : "失败"));
+                    postView("\nWake touch result: " + (success ? "Success" : "Failed"));
                 }
             });
         }

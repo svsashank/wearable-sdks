@@ -76,22 +76,22 @@ public class TestActivity2 extends BaseActivity implements IResponseListenerLite
     Button bt_close_audio;
     private Handler handler = new Handler();  // 创建一个 Handler 实例
     private Runnable runnable;                 // 创建一个 Runnable 来定义任务
-    String outputPath = com.lomo.demo.FileUtil.getSDPath(App.getInstance(), "保存" + ".pcm");
+    String outputPath = com.lomo.demo.FileUtil.getSDPath(App.getInstance(), "Save" + ".pcm");
     private byte[] fileNameByteTest=new byte[]{};//测试文件系统功能的文件名
 
     private IHIDListenerLite ihidListenerLite=new IHIDListenerLite() {
         @Override
         public void setHIDResut(boolean success) {
             if(!success){
-                postView("\n设置HID失败");
+                postView("\nSet HID failed");
             }else {
-                postView("\n设置HID成功");
+                postView("\nSet HID succeeded");
             }
         }
 
         @Override
         public void getHIDInfo(int touchMode, int gestureMode, int system) {
-            postView("\n当前触摸hid模式：" + touchMode + "\n当前手势hid模式：" + gestureMode + "\n当前系统：" + system);
+            postView("\nCurrent touch HID mode: " + touchMode + "\nCurrent gesture HID mode: " + gestureMode + "\nCurrent system: " + system);
         }
 
         @Override
@@ -105,7 +105,7 @@ public class TestActivity2 extends BaseActivity implements IResponseListenerLite
 
         @Override
         public void controlAudioResult(byte[] bytes, int audioType, int samplingFrequency, int audioAccuracy) {
-            postView("\n音频长度"+bytes.length+",类型1单声道2双声道："+audioType);
+            postView("\nAudio length "+bytes.length+", type (1 mono, 2 stereo): "+audioType);
         }
 
         @Override
@@ -301,7 +301,7 @@ public class TestActivity2 extends BaseActivity implements IResponseListenerLite
             @Override
             public void ringPushKeyDownResult(int key) {
 
-                postView("触摸测试："+key+"\n");
+                postView("Touch test: "+key+"\n");
             }
         });
 
@@ -371,7 +371,7 @@ public class TestActivity2 extends BaseActivity implements IResponseListenerLite
 
 
         if(v.getId()== R.id.bt_unpair){
-            postView("\n解绑\n");
+            postView("\nUnbound\n");
             BLEUtils.setGetToken(false);
             BLEUtils.disconnectBLE(this);
             BLEUtils.removeBond(BLEService.getmBluetoothDevice());
@@ -405,7 +405,7 @@ public class TestActivity2 extends BaseActivity implements IResponseListenerLite
                     Date startDate = new Date(sleep2thBean.getStartTime() * 1000);
                     // 将时间戳转换为 Date 对象
                     Date endDate = new Date(sleep2thBean.getEndTime() * 1000);
-                    postView("\n睡眠小时:" + sleep2thBean.getHours() + "\n睡眠分钟:" + sleep2thBean.getMinutes() + "\n开始时间和结束时间，需要通过绘图算法过滤后获得，详见3.5.3-睡眠数据绘图相关");
+                    postView("\nSleep hours: " + sleep2thBean.getHours() + "\nSleep minutes: " + sleep2thBean.getMinutes() + "\nStart and end times come from the drawing filter, see 3.5.3 Sleep chart");
 
                 }
 
@@ -468,7 +468,7 @@ public class TestActivity2 extends BaseActivity implements IResponseListenerLite
 
         if(v.getId()==R.id.bt_star_ppg){
 
-            postView("\n开启实时ppg");
+            postView("\nStarting raw PPG");
             //postView("\n开始读取未上传数据");
             final int[] numCount = {0};
             LmAPILite.START_REAL_TIME_PPG(40, 100, 20, 20, 20, 1, 1, new IRealTimePPGListener() {
@@ -480,7 +480,7 @@ public class TestActivity2 extends BaseActivity implements IResponseListenerLite
                 @Override
                 public void waveformData(int seq, int number, List<String[]> waveData) {
                     numCount[0]=numCount[0]+waveData.size();
-                    postView("\nwaveformData seq:"+seq+",number:"+number+",总条数:"+numCount[0]);
+                    postView("\nwaveformData seq:"+seq+",number:"+number+", total samples: "+numCount[0]);
 
 //                    for (String[] array : waveData) {
 //                        postView("\nwaveData:"+Arrays.toString(array));
@@ -507,7 +507,7 @@ public class TestActivity2 extends BaseActivity implements IResponseListenerLite
 
         if(v.getId()==R.id.bt_stop_ppg){
 
-            postView("\n停止实时ppg");
+            postView("\nRaw PPG stopped");
             //postView("\n开始读取未上传数据");
 
             LmAPILite.STOP_REAL_TIME_PPG();
@@ -515,7 +515,7 @@ public class TestActivity2 extends BaseActivity implements IResponseListenerLite
         }
         if(v.getId()==R.id.bt_testGomore){
 
-            postView("\ngomore戒指授权");
+            postView("\nGoMore ring licence");
             GoMoreUtils.goMoreAuthorizationKey(mac,"76d07e37bfe341b1a25c76c0e25f457a",new GoMoreUtils.IGomoreListener() {
                 @Override
                 public void authorization() {
@@ -550,14 +550,14 @@ public class TestActivity2 extends BaseActivity implements IResponseListenerLite
         }
         if(v.getId()==R.id.bt_get_ntc_adc){
 
-            postView("\n读取多个NTC的ADC值");
+            postView("\nRead multiple NTC ADC values");
             LmAPILite.GET_NTC_ADC(new INtcAdcListenerLite() {
                 @Override
                 public void onNtcAdcResult(int ntcCount, int[] ntcValues) {
-                    StringBuilder sb = new StringBuilder("\n温度个数: " + ntcCount);
+                    StringBuilder sb = new StringBuilder("\nTemperature count: " + ntcCount);
                     for (int i = 0; i < ntcCount; i++) {
                         float temp = ntcValues[i] / 100.0f;
-                        sb.append("\n温度").append(i).append(": ").append(temp).append("℃");
+                        sb.append("\nTemperature ").append(i).append(": ").append(temp).append("℃");
                     }
                     postView(sb.toString());
                 }

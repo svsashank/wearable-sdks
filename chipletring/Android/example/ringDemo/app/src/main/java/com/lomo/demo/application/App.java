@@ -101,7 +101,7 @@ public class App extends Application {
                 return new String(buf, 0, Math.max(read, 0));
             }
         } catch (Throwable e) {
-            return "读取崩溃日志失败:" + e.getMessage();
+            return "Failed to read crash log:" + e.getMessage();
         }
     }
 

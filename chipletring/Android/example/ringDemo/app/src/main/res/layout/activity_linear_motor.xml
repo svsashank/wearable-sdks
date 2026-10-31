@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="线性马达测试(cmd=0x83)"
+            android:text="Linear motor test (cmd=0x83)"
             android:textSize="18sp"
             android:layout_centerInParent="true"
             android:textColor="@color/white"/>
@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="数据区域"
+        android:text="Output"
         android:scrollbars="vertical"
         android:padding="10dp"
         android:lineSpacingExtra="5dp"
@@ -67,7 +67,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="+ 添加配置(最多20)"
+                    android:text="+ Add config (max 20)"
                     android:textSize="12sp"
                     android:textColor="@color/white"
                     android:background="@drawable/button_bg_state" />
@@ -84,7 +84,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="读取振动配置(0x06)"
+                    android:text="Read vibration config (0x06)"
                     android:textSize="12sp"
                     android:textColor="@color/white"
                     android:background="@drawable/button_bg_state"/>
@@ -93,7 +93,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="设置振动配置(0x07)"
+                    android:text="Set vibration config (0x07)"
                     android:textSize="12sp"
                     android:textColor="@color/white"
                     android:background="@drawable/button_bg_state"/>
@@ -110,7 +110,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="立即振动(0x04)"
+                    android:text="Vibrate now (0x04)"
                     android:textSize="12sp"
                     android:textColor="@color/white"
                     android:background="@drawable/button_bg_state"/>
@@ -119,7 +119,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="停止振动(0x05)"
+                    android:text="Stop vibration (0x05)"
                     android:textSize="12sp"
                     android:textColor="@color/white"
                     android:background="@drawable/button_bg_state"/>
@@ -134,7 +134,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="目标值:"
+                    android:text="Target:"
                     android:textSize="12sp"/>
                 <EditText
                     android:id="@+id/et_target_value"
@@ -158,7 +158,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="读取目标值(0x08)"
+                    android:text="Read target (0x08)"
                     android:textSize="12sp"
                     android:textColor="@color/white"
                     android:background="@drawable/button_bg_state"/>
@@ -167,7 +167,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="设置目标值(0x09)"
+                    android:text="Set target (0x09)"
                     android:textSize="12sp"
                     android:textColor="@color/white"
                     android:background="@drawable/button_bg_state"/>
@@ -184,7 +184,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="读取计数值(0x0A)"
+                    android:text="Read count (0x0A)"
                     android:textSize="12sp"
                     android:textColor="@color/white"
                     android:background="@drawable/button_bg_state"/>
@@ -193,7 +193,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="清空计数值(0x0B)"
+                    android:text="Clear count (0x0B)"
                     android:textSize="12sp"
                     android:textColor="@color/white"
                     android:background="@drawable/button_bg_state"/>
@@ -210,7 +210,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="设置计数值监听"
+                    android:text="Listen for count"
                     android:textSize="12sp"
                     android:textColor="@color/white"
                     android:background="@drawable/button_bg_state"/>
@@ -225,21 +225,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="配置下标n:"
+                    android:text="Config index n:"
                     android:textSize="12sp"/>
                 <EditText
                     android:id="@+id/et_vibration_config_index"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:hint="按照第n个配置震动"
+                    android:hint="Vibrate with config n"
                     android:text="0"
                     android:inputType="number"
                     android:textSize="12sp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="间隔(12~100):"
+                    android:text="Interval (12~100):"
                     android:textSize="12sp"/>
                 <EditText
                     android:id="@+id/et_min_count_interval"
@@ -263,7 +263,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="立即振动按配置(0x0C)"
+                    android:text="Vibrate now by config (0x0C)"
                     android:textSize="12sp"
                     android:textColor="@color/white"
                     android:background="@drawable/button_bg_state"/>
@@ -272,7 +272,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="停止振动(0x0D)"
+                    android:text="Stop vibration (0x0D)"
                     android:textSize="12sp"
                     android:textColor="@color/white"
                     android:background="@drawable/button_bg_state"/>
@@ -289,7 +289,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="配置最小计数间隔(0x0E)"
+                    android:text="Set min count interval (0x0E)"
                     android:textSize="12sp"
                     android:textColor="@color/white"
                     android:background="@drawable/button_bg_state"/>
@@ -298,7 +298,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="读取最小计数间隔(0x0F)"
+                    android:text="Read min count interval (0x0F)"
                     android:textSize="12sp"
                     android:textColor="@color/white"
                     android:background="@drawable/button_bg_state"/>

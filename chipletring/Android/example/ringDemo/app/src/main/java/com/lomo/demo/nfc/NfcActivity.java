@@ -111,12 +111,12 @@ public class NfcActivity extends AppCompatActivity implements TagDiscovery.onTag
 
 
         stringBuilder.setLength(0);
-        stringBuilder.append("默认aes key:").append(ConvertUtils.bytes2HexString(AesCtr.DEFAULT_KEY)).append("\n\n");
+        stringBuilder.append("Default AES key:").append(ConvertUtils.bytes2HexString(AesCtr.DEFAULT_KEY)).append("\n\n");
         showLog();
         createAesPassWord.setOnClickListener(v->{
             testAesString= NfcCmd.setKeyToNFC((byte) 1);
-            stringBuilder.append("加密key，按照协议生成的文本:").append(testAesString).append("\n\n");
-            System.out.println("加密key，按照协议生成的文本:"+testAesString);
+            stringBuilder.append("Encrypted key, protocol text:").append(testAesString).append("\n\n");
+            System.out.println("Encrypted key, protocol text:"+testAesString);
             showLog();
             if(mTextRecord!=null){
                 mTextRecord.setText(testAesString);
@@ -126,8 +126,8 @@ public class NfcActivity extends AppCompatActivity implements TagDiscovery.onTag
         });
         createAes.setOnClickListener(v->{
             testAesString= NfcCmd.setKeyToNFC(0);
-            stringBuilder.append("明文key，按照协议生成的文本:").append(testAesString).append("\n\n");
-            System.out.println("明文key，按照协议生成的文本:"+testAesString);
+            stringBuilder.append("Plain key, protocol text:").append(testAesString).append("\n\n");
+            System.out.println("Plain key, protocol text:"+testAesString);
             showLog();
             if(mTextRecord!=null){
                 mTextRecord.setText(testAesString);
@@ -136,8 +136,8 @@ public class NfcActivity extends AppCompatActivity implements TagDiscovery.onTag
         });
         getAesKey.setOnClickListener(v->{
             testAesString= NfcCmd.getKeyFromNFC(0);
-            stringBuilder.append("获取明文的key:").append(testAesString).append("\n\n");
-            System.out.println("获取明文的key，按照协议生成的文本:"+testAesString);
+            stringBuilder.append("Plain key:").append(testAesString).append("\n\n");
+            System.out.println("Plain key, protocol text:"+testAesString);
             showLog();
             if(mTextRecord!=null){
                 mTextRecord.setText(testAesString);
@@ -146,8 +146,8 @@ public class NfcActivity extends AppCompatActivity implements TagDiscovery.onTag
         });
         getAesPassWord.setOnClickListener(v->{
             testAesString= NfcCmd.getKeyFromNFC(1);
-            stringBuilder.append("获取加密key，按照协议生成的文本:").append(testAesString).append("\n\n");
-            System.out.println("获取加密key，按照协议生成的文本:"+testAesString);
+            stringBuilder.append("Encrypted key, protocol text:").append(testAesString).append("\n\n");
+            System.out.println("Encrypted key, protocol text:"+testAesString);
             showLog();
             if(mTextRecord!=null){
                 mTextRecord.setText(testAesString);
@@ -156,7 +156,7 @@ public class NfcActivity extends AppCompatActivity implements TagDiscovery.onTag
         });
         getDeviceID.setOnClickListener(v->{
             testAesString= NfcCmd.getDeviceId(0);
-            stringBuilder.append("明文获取设备ID，按照协议生成的文本:").append(testAesString).append("\n\n");
+            stringBuilder.append("Device ID (plain), protocol text:").append(testAesString).append("\n\n");
             showLog();
             if(mTextRecord!=null){
                 mTextRecord.setText(testAesString);
@@ -166,7 +166,7 @@ public class NfcActivity extends AppCompatActivity implements TagDiscovery.onTag
 
         getDeviceIdPassWord.setOnClickListener(v->{
             testAesString= NfcCmd.getDeviceId(1);
-            stringBuilder.append("密文获取设备ID，按照协议生成的文本:").append(testAesString).append("\n\n");
+            stringBuilder.append("Device ID (encrypted), protocol text:").append(testAesString).append("\n\n");
             showLog();
             if(mTextRecord!=null){
                 mTextRecord.setText(testAesString);
@@ -265,15 +265,15 @@ public class NfcActivity extends AppCompatActivity implements TagDiscovery.onTag
 
             if (mNfcAdapter.isEnabled()) {
                 // NFC enabled
-                stringBuilder.append("手机NFC可用").append("\n\n");
+                stringBuilder.append("Phone NFC available").append("\n\n");
             } else {
                 // NFC disabled
 
-                stringBuilder.append("当前NFC关闭").append("\n\n");
+                stringBuilder.append("NFC is off").append("\n\n");
             }
 
         } else {
-            stringBuilder.append("手机NFC不可用").append("\n\n");
+            stringBuilder.append("Phone NFC not available").append("\n\n");
             showLog();
         }
 
@@ -295,8 +295,8 @@ public class NfcActivity extends AppCompatActivity implements TagDiscovery.onTag
         //Toast.makeText(getApplication(), "onTagDiscoveryCompleted. productId:" + productId, Toast.LENGTH_LONG).show();
         if (e != null) {
             Log.i(TAG, e.toString());
-            Toast.makeText(getApplication(), "读标签出错!", Toast.LENGTH_LONG).show();
-            stringBuilder.append("读标签出错!\n\n");
+            Toast.makeText(getApplication(), "Tag read error!", Toast.LENGTH_LONG).show();
+            stringBuilder.append("Tag read error!\n\n");
             showLog();
             return;
         }
@@ -396,7 +396,7 @@ public class NfcActivity extends AppCompatActivity implements TagDiscovery.onTag
                     case TAG_NOT_IN_THE_FIELD:
                         result = ActionStatus.TAG_NOT_IN_THE_FIELD;
                         runOnUiThread(() -> {
-                            Toast.makeText(NfcActivity.this,"不在范围:"+e.getMessage(),Toast.LENGTH_LONG).show();
+                            Toast.makeText(NfcActivity.this,"Out of range:"+e.getMessage(),Toast.LENGTH_LONG).show();
                         });
 
                         break;
@@ -404,7 +404,7 @@ public class NfcActivity extends AppCompatActivity implements TagDiscovery.onTag
                     default:
 
                         runOnUiThread(() -> {
-                            Toast.makeText(NfcActivity.this,"读内容出错:"+e.getMessage(),Toast.LENGTH_LONG).show();
+                            Toast.makeText(NfcActivity.this,"Content read error:"+e.getMessage(),Toast.LENGTH_LONG).show();
                         });
                         e.printStackTrace();
                         break;
@@ -428,19 +428,19 @@ public class NfcActivity extends AppCompatActivity implements TagDiscovery.onTag
                         if (mNDEFRecord instanceof TextRecord) {
                             mTextRecord= (TextRecord) mCurrentNdefMsg.getNDEFRecord(0);
                             testAesString=((TextRecord) mNDEFRecord).getText();
-                            stringBuilder.append("nfc读取的内容:").append(((TextRecord) mNDEFRecord).getText()).append("\n\n");
-                            System.out.println("nfc读取的内容:"+testAesString);
+                            stringBuilder.append("NFC content:").append(((TextRecord) mNDEFRecord).getText()).append("\n\n");
+                            System.out.println("NFC content:"+testAesString);
                             showLog();
 
                             try {
                                 byte[] bytes = BitUtils.hexToBytes(testAesString);
                                 String aes128KeyFromNFC = NfcCmd.analyzeContent(testAesString);
                                 if(bytes[3]==0){//不加密
-                                    System.out.println("不加密的秘钥");
+                                    System.out.println("Unencrypted key");
 
-                                    stringBuilder.append("内容:").append(aes128KeyFromNFC).append("\n\n");
+                                    stringBuilder.append("Content:").append(aes128KeyFromNFC).append("\n\n");
                                 }else{
-                                    stringBuilder.append("解密后的内容:").append(aes128KeyFromNFC).append("\n\n");
+                                    stringBuilder.append("Decrypted content:").append(aes128KeyFromNFC).append("\n\n");
                                 }
 
 
@@ -452,13 +452,13 @@ public class NfcActivity extends AppCompatActivity implements TagDiscovery.onTag
                             }
 
                         }else{
-                            Toast.makeText(NfcActivity.this,"不是文本格式",Toast.LENGTH_LONG).show();
+                            Toast.makeText(NfcActivity.this,"Not text format",Toast.LENGTH_LONG).show();
                         }
                     }
                     break;
 
                 case TAG_NOT_IN_THE_FIELD:
-                    Toast.makeText(NfcActivity.this,"标签不在场区内",Toast.LENGTH_LONG).show();
+                    Toast.makeText(NfcActivity.this,"Tag out of range",Toast.LENGTH_LONG).show();
                     break;
 
                 case ACTION_FAILED:
@@ -527,17 +527,17 @@ public class NfcActivity extends AppCompatActivity implements TagDiscovery.onTag
 
                 case ACTION_SUCCESSFUL:
 
-                    Toast.makeText(NfcActivity.this,"标签已更新",Toast.LENGTH_LONG).show();
+                    Toast.makeText(NfcActivity.this,"Tag updated",Toast.LENGTH_LONG).show();
                     break;
 
 
                 case TAG_NOT_IN_THE_FIELD:
-                    Toast.makeText(NfcActivity.this,"标签不在场区内",Toast.LENGTH_LONG).show();
+                    Toast.makeText(NfcActivity.this,"Tag out of range",Toast.LENGTH_LONG).show();
                     break;
 
                 case ACTION_FAILED:
                 default:
-                    Toast.makeText(NfcActivity.this,"命令失败！",Toast.LENGTH_LONG).show();
+                    Toast.makeText(NfcActivity.this,"Command failed!",Toast.LENGTH_LONG).show();
                     break;
             }
         }

@@ -96,7 +96,7 @@ public class MainActivity extends Activity {
                         public void onResult(@NonNull List<IPermission> grantedList, @NonNull List<IPermission> deniedList) {
                             boolean allGranted = deniedList.isEmpty();
                             if (!allGranted) {
-                                Toast.makeText(getApplicationContext(),"获取部分权限成功，但部分权限未正常授予",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"Some permissions were granted, but not all",Toast.LENGTH_SHORT).show();
                                 return;
                             }
                             searchDevice();
@@ -114,7 +114,7 @@ public class MainActivity extends Activity {
                         public void onResult(@NonNull List<IPermission> grantedList, @NonNull List<IPermission> deniedList) {
                             boolean allGranted = deniedList.isEmpty();
                             if (!allGranted) {
-                                Toast.makeText(getApplicationContext(),"获取部分权限成功，但部分权限未正常授予",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"Some permissions were granted, but not all",Toast.LENGTH_SHORT).show();
                                 return;
                             }
                             searchDevice();
@@ -154,7 +154,7 @@ public class MainActivity extends Activity {
                 DeviceBean deviceBean = (DeviceBean) o;
                 //OPPO/华为部分机型扫描回调中device可能为空，直接调用getAddress会NPE闪退
                 if (deviceBean == null || deviceBean.getDevice() == null) {
-                    Toast.makeText(MainActivity.this, "设备信息为空，请下拉刷新后重试", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Device info empty, pull down to refresh and retry", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 try {
@@ -170,7 +170,7 @@ public class MainActivity extends Activity {
                 } catch (Throwable t) {
                     //兜底：任何异常都上报Bugly并写入本地崩溃日志，避免静默闪退无日志
                     CrashReport.postCatchedException(t);
-                    Toast.makeText(MainActivity.this, "打开设备页面失败:" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Failed to open device page:" + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -226,7 +226,7 @@ public class MainActivity extends Activity {
             adapter.updateData(deviceBean);
             } catch (Throwable t) {
                 //getName()/getAddress()在权限被回收的OPPO/华为机型上抛SecurityException
-                Logger.show("leScanCallback", "扫描回调异常:" + t);
+                Logger.show("leScanCallback", "Scan callback error:" + t);
             }
         }
     };

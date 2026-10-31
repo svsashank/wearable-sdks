@@ -25,9 +25,9 @@ public class NfcCmd {
         //对秘钥加密
         if(encryptionFlag==1){
             try {
-                System.out.println("AES128Key 加密前："+AesCtr.bytesToHex(aesContent));
+                System.out.println("AES128Key before encryption: "+AesCtr.bytesToHex(aesContent));
                 aesContent = AesCtr.encryptAes128Ctr(aesContent);
-                System.out.println("AES128Key 加密后："+AesCtr.bytesToHex(aesContent));
+                System.out.println("AES128Key after encryption: "+AesCtr.bytesToHex(aesContent));
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -54,9 +54,9 @@ public class NfcCmd {
         //对秘钥加密
         if(encryptionFlag==1){
             try {
-                System.out.println("AES128Key 加密前："+AesCtr.bytesToHex(aesContent));
+                System.out.println("AES128Key before encryption: "+AesCtr.bytesToHex(aesContent));
                 aesContent = AesCtr.encryptAes128Ctr(aesContent);
-                System.out.println("AES128Key 加密后："+AesCtr.bytesToHex(aesContent));
+                System.out.println("AES128Key after encryption: "+AesCtr.bytesToHex(aesContent));
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -82,7 +82,7 @@ public class NfcCmd {
         System.arraycopy(bytes, 4, keyBytes, 0, keyBytes.length);
         String contentent = ConvertUtils.bytes2HexString(keyBytes);
         if(bytes[3]==0){//不加密
-            System.out.println("不加密的秘钥");
+            System.out.println("Unencrypted key");
             return contentent;
         }
         /**
@@ -91,7 +91,7 @@ public class NfcCmd {
         byte[] decryptAes128Ctr = AesCtr.decryptAes128Ctr(keyBytes);
         String decryptKey = AesCtr.bytesToHex(decryptAes128Ctr);
 
-        System.out.println("解密以后的秘钥:"+decryptKey);
+        System.out.println("Decrypted key: "+decryptKey);
         //将新的秘钥设置为本地加密秘钥
       //  AES128CTR.DEFAULT_KEY=decryptKey;
         return decryptKey;

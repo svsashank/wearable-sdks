@@ -199,7 +199,7 @@ public class GoMoreSleepActivity extends BaseActivity implements  View.OnClickLi
             sleepChatView.setVisibility(View.INVISIBLE);
             in_sleep_layout.setVisibility(View.GONE);
             main_scale.setVisibility(View.INVISIBLE);
-            tv_sleep_not.setText("暂无睡眠");
+            tv_sleep_not.setText("No sleep data");
 
             tv_sleep_not.setVisibility(View.VISIBLE);
         }
@@ -231,7 +231,7 @@ public class GoMoreSleepActivity extends BaseActivity implements  View.OnClickLi
             sleepChatView.setVisibility(View.INVISIBLE);
             in_sleep_layout.setVisibility(View.GONE);
             main_scale.setVisibility(View.INVISIBLE);
-            tv_sleep_not.setText("暂无睡眠");
+            tv_sleep_not.setText("No sleep data");
 
             tv_sleep_not.setVisibility(View.VISIBLE);
         }
@@ -261,34 +261,34 @@ public class GoMoreSleepActivity extends BaseActivity implements  View.OnClickLi
     @Override
     public void onClick(View v) {
         if(v.getId()== R.id.bt_goMoreSleep){
-            postView("\ngomore睡眠");
+            postView("\nGoMore sleep");
             List<GoMoreSleep> sleepStaging=new ArrayList<>();
 
             LmAPILite.GET_GOMORE_SLEEP(new IGoMoreListener() {
                 @Override
                 public void overviewOfSleep(GoMoreSleep goMoreSleep) {
                     StringBuilder stringBuilder=new StringBuilder();
-                    stringBuilder.append("开始时间：")
+                    stringBuilder.append("Start: ")
                             .append( DateUtils.longToString(goMoreSleep.getStartTs()*1000,"yyyy-MM-dd HH:mm:ss"))
-                                    .append(",结束时间:")
+                                    .append(", end: ")
                                             .append( DateUtils.longToString(goMoreSleep.getEndTs()*1000,"yyyy-MM-dd HH:mm:ss"))
-                                                    .append(",睡眠潜伏期:").append(goMoreSleep.getLatency()).append("分钟")
-                                    .append(",清醒时间:").append(goMoreSleep.getWakeTimes()).append("分钟")
-                                    .append(",不包含清醒时间的总睡眠时间:").append(goMoreSleep.getTotalSleepTime()).append("分钟")
-                                    .append(",入睡后的总清醒时间:").append(goMoreSleep.getWaso()).append("分钟")
-                                    .append(",睡眠时间:").append(goMoreSleep.getSleepPeriod()).append("分钟")
-                                    .append(",睡眠效率:").append(goMoreSleep.getEfficiency()/100).append("%")
-                                    .append(",清醒与睡眠比例:").append(goMoreSleep.getWakeRatio()/100).append("%")
-                                    .append(",眼动与睡眠比例:").append(goMoreSleep.getRemRatio()/100).append("%")
-                                    .append(",浅睡与睡眠比例:").append(goMoreSleep.getLightRatio()/100).append("%")
-                                    .append(",深睡与睡眠比例:").append(goMoreSleep.getDeepRatio()/100).append("%")
-                                    .append(",清醒时间:").append(goMoreSleep.getWakeNumMinutes()).append("分钟")
-                                    .append(",眼动时间:").append(goMoreSleep.getRemNumMinutes()).append("分钟")
-                                    .append(",浅睡时间:").append(goMoreSleep.getLightNumMinutes()).append("分钟")
-                                    .append(",深睡时间:").append(goMoreSleep.getDeepNumMinutes()).append("分钟")
-                                    .append(",睡眠评分").append(goMoreSleep.getScore())
-                                    .append(",睡眠类型:").append(goMoreSleep.getType()==1?"长睡":"短睡");
-                    postView("\ngomore睡眠睡眠总览:"+ stringBuilder);
+                                                    .append(", sleep latency: ").append(goMoreSleep.getLatency()).append("min")
+                                    .append(", awake time: ").append(goMoreSleep.getWakeTimes()).append("min")
+                                    .append(", total sleep excl. awake: ").append(goMoreSleep.getTotalSleepTime()).append("min")
+                                    .append(", awake after sleep onset: ").append(goMoreSleep.getWaso()).append("min")
+                                    .append(", sleep time: ").append(goMoreSleep.getSleepPeriod()).append("min")
+                                    .append(", sleep efficiency: ").append(goMoreSleep.getEfficiency()/100).append("%")
+                                    .append(", awake/sleep ratio: ").append(goMoreSleep.getWakeRatio()/100).append("%")
+                                    .append(", REM/sleep ratio: ").append(goMoreSleep.getRemRatio()/100).append("%")
+                                    .append(", light/sleep ratio: ").append(goMoreSleep.getLightRatio()/100).append("%")
+                                    .append(", deep/sleep ratio: ").append(goMoreSleep.getDeepRatio()/100).append("%")
+                                    .append(", awake time: ").append(goMoreSleep.getWakeNumMinutes()).append("min")
+                                    .append(", REM time: ").append(goMoreSleep.getRemNumMinutes()).append("min")
+                                    .append(", light time: ").append(goMoreSleep.getLightNumMinutes()).append("min")
+                                    .append(", deep time: ").append(goMoreSleep.getDeepNumMinutes()).append("min")
+                                    .append(", sleep score").append(goMoreSleep.getScore())
+                                    .append(", sleep type: ").append(goMoreSleep.getType()==1?"Long sleep":"Short sleep");
+                    postView("\nGoMore sleep summary:"+ stringBuilder);
                     overviewSleep =goMoreSleep;
                  //   postView("\ngomore睡眠睡眠总览原始数据:"+ GsonUtils.beanToJson(goMoreSleep));
 
@@ -298,7 +298,7 @@ public class GoMoreSleepActivity extends BaseActivity implements  View.OnClickLi
                 @Override
                 public void sleepStaging(GoMoreSleep goMoreSleep) {
                     sleepStaging.add(goMoreSleep);
-                    postView("\ngomore睡眠睡眠分期原始数据:"+ GsonUtils.beanToJson(goMoreSleep));
+                    postView("\nGoMore sleep stage raw data:"+ GsonUtils.beanToJson(goMoreSleep));
                     Log.e(TAG, "sleepStaging: "+ GsonUtils.beanToJson(goMoreSleep));
                 }
 
@@ -338,7 +338,7 @@ public class GoMoreSleepActivity extends BaseActivity implements  View.OnClickLi
 
                 @Override
                 public void noSleepData() {
-                    postView("\ngomore睡眠 noSleepData");
+                    postView("\nGoMore sleep noSleepData");
                 }
             });
         }
