@@ -6,7 +6,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven("https://jitpack.io")   // one ring-SDK dependency (okhttputils) lives here
+        maven("https://jitpack.io")
+        @Suppress("DEPRECATION")
+        jcenter()   // ring SDK needs okhttputils + fastjson converter, only published there (read-only, still served)
     }
 }
 rootProject.name = "smriti"
