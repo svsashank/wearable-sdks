@@ -7,8 +7,11 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven("https://jitpack.io")
-        @Suppress("DEPRECATION")
-        jcenter()   // ring SDK needs okhttputils + fastjson converter, only published there (read-only, still served)
+        // The ring SDK needs okhttputils + a fastjson converter, old JCenter-only libraries.
+        // The vendor demo resolves them from this public mirror; build-time downloads only.
+        maven("https://maven.aliyun.com/repository/public") {
+            content { includeGroup("com.zhy"); includeGroup("org.ligboy.retrofit2") }
+        }
     }
 }
 rootProject.name = "smriti"
