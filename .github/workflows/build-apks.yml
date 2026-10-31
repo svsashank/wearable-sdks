@@ -15,8 +15,8 @@ jobs:
     name: ChipletRing vendor demo
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
         with: { distribution: temurin, java-version: "17" }
       - name: Build
         working-directory: chipletring/Android/example/ringDemo
@@ -31,8 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true   # first ever build of our own code; the vendor demo must not depend on it
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
         with: { distribution: temurin, java-version: "17" }
       - uses: gradle/actions/setup-gradle@v4
         with: { gradle-version: "8.11.1" }
@@ -40,7 +40,17 @@ jobs:
         run: cp chipletring/Android/example/ringDemo/app/libs/ChipletRing-*.aar smriti-android/app/libs/
       - name: Build
         working-directory: smriti-android
-        run: gradle assembleDebug testDebugUnitTest --stacktrace --no-daemon
+        shell: bash
+        run: |
+          set +e
+          gradle assembleDebug testDebugUnitTest --no-daemon > build.log 2>&1
+          st=$?
+          if [ $st -ne 0 ]; then
+            # Surface the real errors as one annotation (readable without log access)
+            msg=$(grep -E "^e: |error:|What went wrong|Could not|> " build.log | head -40 | sed 's/%/%25/g' | awk '{printf "%s%%0A", $0}')
+            echo "::error title=smriti build::${msg}"
+          fi
+          exit $st
       - name: Collect
         run: cp smriti-android/app/build/outputs/apk/debug/*.apk smriti-probe.apk
       - uses: actions/upload-artifact@v4
