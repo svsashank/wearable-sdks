@@ -1,0 +1,67 @@
+# Builds the test apps in GitHub's cloud and publishes them as a Release,
+# so the APKs can be downloaded straight onto a phone. No Android Studio needed.
+name: Build APKs
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  ring-demo:
+    name: ChipletRing vendor demo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "17" }
+      - name: Build
+        working-directory: chipletring/Android/example/ringDemo
+        run: ./gradlew assembleDebug --stacktrace --no-daemon
+      - name: Collect
+        run: cp chipletring/Android/example/ringDemo/app/build/outputs/apk/debug/*.apk ring-demo.apk
+      - uses: actions/upload-artifact@v4
+        with: { name: ring-demo, path: ring-demo.apk }
+
+  smriti-app:
+    name: Smriti app (English ring probe)
+    runs-on: ubuntu-latest
+    continue-on-error: true   # first ever build of our own code; the vendor demo must not depend on it
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "17" }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: "8.11.1" }
+      - name: Add vendor ring SDK
+        run: cp chipletring/Android/example/ringDemo/app/libs/ChipletRing-*.aar smriti-android/app/libs/
+      - name: Build
+        working-directory: smriti-android
+        run: gradle assembleDebug testDebugUnitTest --stacktrace --no-daemon
+      - name: Collect
+        run: cp smriti-android/app/build/outputs/apk/debug/*.apk smriti-probe.apk
+      - uses: actions/upload-artifact@v4
+        with: { name: smriti-probe, path: smriti-probe.apk }
+
+  release:
+    name: Publish for phone download
+    needs: [ring-demo, smriti-app]
+    if: always() && needs.ring-demo.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { path: apks, merge-multiple: true }
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: test-apks-${{ github.run_number }}
+          name: Test apps (build ${{ github.run_number }})
+          make_latest: true
+          files: apks/*.apk
+          body: |
+            Open this page on the phone and tap an APK to install.
+            - **ring-demo.apk** — Bravechip ChipletRing demo (Chinese labels; see docs/milestone-1.md in smriti)
+            - **smriti-probe.apk** — our English ring probe (only present if it built)
+            Use with the phone in airplane mode + Bluetooth on.
