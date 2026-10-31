@@ -18,7 +18,8 @@
         android:label="Smriti"
         android:theme="@style/Theme.AppCompat.DayNight"
         android:usesCleartextTraffic="true"
-        android:allowBackup="false">
+        android:allowBackup="false"
+        tools:replace="android:label,android:allowBackup,android:theme">
         <!-- cleartext only reaches our own server over the Tailscale tunnel, which is encrypted -->
 
         <activity android:name=".ui.ProbeActivity" android:exported="true">
