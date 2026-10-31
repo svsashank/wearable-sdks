@@ -145,7 +145,7 @@ class ChipletRingDevice(
     private fun HistoryDataBean.toRecord(): HealthRecord? {
         if (time <= 0) return null
         return HealthRecord(
-            deviceId = id,
+            deviceId = this@ChipletRingDevice.id,  // the bean has its own `id` (a DB row Long)
             epochMs = if (time < 10_000_000_000L) time * 1000 else time, // SDK sends seconds; be safe
             heartRate = heartRate.takeIf { it in 25..240 },
             spo2 = bloodOxygen.takeIf { it in 70..100 },
