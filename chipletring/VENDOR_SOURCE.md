@@ -4,3 +4,4 @@ Only changes, for cloud builds: removed ringDemo/local.properties (vendor's Wind
 Gradle wrapper at services.gradle.org instead of the Tencent mirror.
 Demo UI translated to English (all on-screen text and log messages). Dangerous buttons are marked ⛔
 (bind/wipe history, firmware update, GoMore/cloud, setting changes).
+MainActivity: no longer demands All-files access (MANAGE_EXTERNAL_STORAGE) before scanning; scans even if an optional permission is denied.

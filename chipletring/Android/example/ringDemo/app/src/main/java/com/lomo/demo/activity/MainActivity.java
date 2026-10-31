@@ -83,8 +83,6 @@ public class MainActivity extends Activity {
                     .permission(PermissionLists.getBluetoothConnectPermission())
                     .permission(
                             PermissionLists.getBluetoothAdvertisePermission())
-                    .permission(
-                            PermissionLists.getManageExternalStoragePermission())
 
                     // 设置权限请求拦截器（局部设置）
                     //.interceptor(new PermissionInterceptor())
@@ -96,8 +94,7 @@ public class MainActivity extends Activity {
                         public void onResult(@NonNull List<IPermission> grantedList, @NonNull List<IPermission> deniedList) {
                             boolean allGranted = deniedList.isEmpty();
                             if (!allGranted) {
-                                Toast.makeText(getApplicationContext(),"Some permissions were granted, but not all",Toast.LENGTH_SHORT).show();
-                                return;
+                                Toast.makeText(getApplicationContext(),"Some permissions denied: scanning anyway",Toast.LENGTH_SHORT).show();
                             }
                             searchDevice();
                         }
@@ -114,8 +111,7 @@ public class MainActivity extends Activity {
                         public void onResult(@NonNull List<IPermission> grantedList, @NonNull List<IPermission> deniedList) {
                             boolean allGranted = deniedList.isEmpty();
                             if (!allGranted) {
-                                Toast.makeText(getApplicationContext(),"Some permissions were granted, but not all",Toast.LENGTH_SHORT).show();
-                                return;
+                                Toast.makeText(getApplicationContext(),"Some permissions denied: scanning anyway",Toast.LENGTH_SHORT).show();
                             }
                             searchDevice();
                         }
