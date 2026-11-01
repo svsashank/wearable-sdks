@@ -311,7 +311,7 @@ public class TestActivity extends BaseActivity implements IResponseListenerLite,
 
                     @Override
                     public void appConnect(SystemControlLiteBean systemControlBean) {
-                        postView("\nappConnect:"+systemControlBean);
+                        postView(capabilitySummary(systemControlBean)); postView("\n\nDetails: "+systemControlBean);
                     }
 
                     @Override
@@ -882,4 +882,22 @@ public class TestActivity extends BaseActivity implements IResponseListenerLite,
             return true;
         });
     }
+
+    // Plain-English summary of what the ring says it supports (added for testing)
+    private String capabilitySummary(com.lm.sdk.mode.SystemControlLiteBean b) {
+        StringBuilder sb = new StringBuilder("\n── This ring ──");
+        sb.append("\nFirmware  ").append(b.getFirmwareVersion());
+        sb.append("\nHardware  ").append(b.getHardwareVersion());
+        sb.append("\nBattery   ").append(b.getBattery()).append("%");
+        sb.append("\nMeasures every ").append(b.getCollectionInterval() / 60).append(" min");
+        sb.append("\n").append(mark(b.getHeartRate())).append(" Heart rate");
+        sb.append("\n").append(mark(b.getBlood())).append(" Blood oxygen");
+        sb.append("\n").append(mark(b.getVariability())).append(" HRV");
+        sb.append("\n").append(mark(b.getPressure())).append(" Stress");
+        sb.append("\n").append(mark(b.getTemperature())).append(" Temperature");
+        sb.append("\n").append(mark(b.getMicrophone())).append(" Microphone (voice)");
+        sb.append("\n").append(mark(b.getFileSystem())).append(" Raw data files");
+        return sb.toString();
+    }
+    private static String mark(int v) { return v != 0 ? "✓" : "✗"; }
 }

@@ -1,288 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:fitsSystemWindows="true"
-    tools:context=".activity.TestActivity2">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@color/colorPrimary">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ring test"
-            android:textSize="18sp"
-            android:layout_centerInParent="true"
-            android:textColor="@color/white"/>
-    </RelativeLayout>
-    <TextView
-        android:id="@+id/tv_result2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="Output"
-        android:scrollbars="vertical"
-        android:padding="10dp"
-        android:lineSpacingExtra="5dp"
-        android:textSize="16sp"
-        android:textColor="@color/colorPrimaryDark"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/bt_set_HID"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Set HID"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-            <Button
-                android:id="@+id/bt_get_HID"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Get HID"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-            <Button
-                android:id="@+id/bt_get_HID_code"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="HID functions"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-        </LinearLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical"
+ android:background="#F4F5FA" android:fitsSystemWindows="true">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
+ android:background="#191F48" android:paddingStart="20dp" android:paddingEnd="16dp" android:paddingTop="16dp" android:paddingBottom="16dp" android:gravity="center_vertical">
+ <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Voice &amp; sensors" android:textSize="20sp" android:textStyle="bold" android:textColor="#FFFFFF"/>
+  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Use the back button to return" android:textSize="13sp" android:textColor="#AEB4D6"/>
+ </LinearLayout>
+</LinearLayout>
+<LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="0.42" android:orientation="vertical"
+ android:background="@drawable/sm_card" android:layout_margin="12dp" android:padding="12dp">
+ <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:letterSpacing="0.08"
+  android:textColor="#7A8199" android:text="OUTPUT  ·  press and hold to share"/>
+ <TextView android:id="@+id/tv_result2" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="6dp"
+  android:scrollbars="vertical" android:fontFamily="monospace" android:textSize="12.5sp" android:lineSpacingExtra="3dp" android:textColor="#1E2350"
+  android:text="Ready."/>
+</LinearLayout>
+<ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="0.58">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingBottom="24dp">
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:layout_marginStart="6dp"
+ android:textSize="12sp" android:letterSpacing="0.08" android:textStyle="bold" android:textColor="#5A6180" android:text="VOICE"/>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="13sp" android:textColor="#7A8199" android:text="Tap Start, speak, then Stop. The recording is saved to Downloads."/>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="6dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"><Button android:id="@+id/bt_set_audio_type" android:layout_width="0dp" android:layout_weight="1" android:layout_height="52dp" android:layout_margin="5dp"
+ android:background="@drawable/sm_btn_primary" android:stateListAnimator="@null" android:textAllCaps="false" android:textSize="15sp"
+ android:textColor="#FFFFFF" android:text="● Start recording"/><Button android:id="@+id/bt_stop_audio" android:layout_width="0dp" android:layout_weight="1" android:layout_height="52dp" android:layout_margin="5dp"
+ android:background="@drawable/sm_btn_stop" android:stateListAnimator="@null" android:textAllCaps="false" android:textSize="15sp"
+ android:textColor="#B42318" android:text="■ Stop &amp; save"/></LinearLayout><LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"><Button android:id="@+id/bt_get_audio_type" android:layout_width="0dp" android:layout_weight="1" android:layout_height="52dp" android:layout_margin="5dp"
+ android:background="@drawable/sm_btn" android:stateListAnimator="@null" android:textAllCaps="false" android:textSize="15sp"
+ android:textColor="#1E2350" android:text="Audio format"/><View android:layout_width="0dp" android:layout_weight="1" android:layout_height="1dp" android:layout_margin="5dp"/></LinearLayout>
+</LinearLayout><TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:layout_marginStart="6dp"
+ android:textSize="12sp" android:letterSpacing="0.08" android:textStyle="bold" android:textColor="#5A6180" android:text="RAW HEART SIGNAL (PPG)"/>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="13sp" android:textColor="#7A8199" android:text="Keep your hand still on a table while it runs."/>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="6dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"><Button android:id="@+id/bt_star_ppg" android:layout_width="0dp" android:layout_weight="1" android:layout_height="52dp" android:layout_margin="5dp"
+ android:background="@drawable/sm_btn_primary" android:stateListAnimator="@null" android:textAllCaps="false" android:textSize="15sp"
+ android:textColor="#FFFFFF" android:text="Start raw signal"/><Button android:id="@+id/bt_stop_ppg" android:layout_width="0dp" android:layout_weight="1" android:layout_height="52dp" android:layout_margin="5dp"
+ android:background="@drawable/sm_btn_stop" android:stateListAnimator="@null" android:textAllCaps="false" android:textSize="15sp"
+ android:textColor="#B42318" android:text="Stop"/></LinearLayout>
+</LinearLayout><TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:layout_marginStart="6dp"
+ android:textSize="12sp" android:letterSpacing="0.08" android:textStyle="bold" android:textColor="#5A6180" android:text="OTHER SENSORS"/>
 
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/bt_get_audio_type"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Get audio format"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-            <Button
-                android:id="@+id/bt_set_audio_type"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Start recording"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-            <Button
-                android:id="@+id/bt_stop_audio"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Stop recording"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/bt_get_rssi"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Get RSSI"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-            <Button
-                android:id="@+id/btn_touch_test_open"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Start touch test"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-            <Button
-                android:id="@+id/btn_touch_test_close"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Stop touch test"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/bt_sleep_sevice"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="⛔ Cloud sleep calculation"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-            <Button
-                android:id="@+id/bt_ecg_demo"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="ECG sample"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/bt_file_list"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="List files on ring"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-            <Button
-                android:id="@+id/bt_file_content"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Parse file"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-            <Button
-                android:id="@+id/bt_resume_breakpoint"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Resume download"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/bt_star_ppg"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Start raw PPG"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-            <Button
-                android:id="@+id/bt_stop_ppg"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Stop raw PPG"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/bt_testGomore"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="⛔ GoMore ring licence"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-            <Button
-                android:id="@+id/bt_test_vibration"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Vibration test"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/bt_get_ntc_adc"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Read multiple NTC ADC values"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg_state"/>
-        </LinearLayout>
-
-
-        <Button
-            android:id="@+id/bt_test2"
-            android:layout_width="match_parent"
-            android:layout_marginTop="5dp"
-            android:layout_height="30dp"
-            android:text="Fenda custom page"
-            android:textSize="14sp"
-            android:textColor="@color/white"
-            android:background="@drawable/button_bg_state"/>
-        <Button
-            android:id="@+id/bt_unpair"
-            android:layout_width="match_parent"
-            android:layout_marginTop="5dp"
-            android:layout_height="30dp"
-            android:text="⛔ Unpair"
-            android:textSize="14sp"
-            android:textColor="@color/white"
-            android:background="@drawable/button_bg_state"/>
-    </LinearLayout>
-
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="6dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"><Button android:id="@+id/bt_get_ntc_adc" android:layout_width="0dp" android:layout_weight="1" android:layout_height="52dp" android:layout_margin="5dp"
+ android:background="@drawable/sm_btn" android:stateListAnimator="@null" android:textAllCaps="false" android:textSize="15sp"
+ android:textColor="#1E2350" android:text="Skin temperature sensors"/><Button android:id="@+id/bt_get_rssi" android:layout_width="0dp" android:layout_weight="1" android:layout_height="52dp" android:layout_margin="5dp"
+ android:background="@drawable/sm_btn" android:stateListAnimator="@null" android:textAllCaps="false" android:textSize="15sp"
+ android:textColor="#1E2350" android:text="Signal strength"/></LinearLayout>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"><Button android:id="@+id/bt_file_list" android:layout_width="0dp" android:layout_weight="1" android:layout_height="52dp" android:layout_margin="5dp"
+ android:background="@drawable/sm_btn" android:stateListAnimator="@null" android:textAllCaps="false" android:textSize="15sp"
+ android:textColor="#1E2350" android:text="Files on ring"/><View android:layout_width="0dp" android:layout_weight="1" android:layout_height="1dp" android:layout_margin="5dp"/></LinearLayout>
+</LinearLayout>
+<!-- Vendor controls we never use (dangerous, cloud, or irrelevant). Kept only because the code looks them up. -->
+<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="gone" android:orientation="vertical"><Button android:id="@+id/bt_set_HID" android:layout_width="wrap_content" android:layout_height="wrap_content"/><Button android:id="@+id/bt_get_HID" android:layout_width="wrap_content" android:layout_height="wrap_content"/><Button android:id="@+id/bt_get_HID_code" android:layout_width="wrap_content" android:layout_height="wrap_content"/><Button android:id="@+id/btn_touch_test_open" android:layout_width="wrap_content" android:layout_height="wrap_content"/><Button android:id="@+id/btn_touch_test_close" android:layout_width="wrap_content" android:layout_height="wrap_content"/><Button android:id="@+id/bt_sleep_sevice" android:layout_width="wrap_content" android:layout_height="wrap_content"/><Button android:id="@+id/bt_ecg_demo" android:layout_width="wrap_content" android:layout_height="wrap_content"/><Button android:id="@+id/bt_file_content" android:layout_width="wrap_content" android:layout_height="wrap_content"/><Button android:id="@+id/bt_resume_breakpoint" android:layout_width="wrap_content" android:layout_height="wrap_content"/><Button android:id="@+id/bt_testGomore" android:layout_width="wrap_content" android:layout_height="wrap_content"/><Button android:id="@+id/bt_test_vibration" android:layout_width="wrap_content" android:layout_height="wrap_content"/><Button android:id="@+id/bt_test2" android:layout_width="wrap_content" android:layout_height="wrap_content"/><Button android:id="@+id/bt_unpair" android:layout_width="wrap_content" android:layout_height="wrap_content"/></LinearLayout>
+</LinearLayout>
+</ScrollView>
 </LinearLayout>
