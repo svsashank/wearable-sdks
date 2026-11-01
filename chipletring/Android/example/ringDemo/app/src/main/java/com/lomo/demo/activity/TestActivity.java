@@ -135,6 +135,9 @@ public class TestActivity extends BaseActivity implements IResponseListenerLite,
         LmAPILite.addWLSCmdListener(this, this);
 
         tv_result=findViewById(R.id.tv_result); enableShareLog(tv_result);
+        findViewById(R.id.bt_iv_5).setOnClickListener(v -> setMeasureInterval(300));
+        findViewById(R.id.bt_iv_10).setOnClickListener(v -> setMeasureInterval(600));
+        findViewById(R.id.bt_iv_20).setOnClickListener(v -> setMeasureInterval(1200));
         et_collection_period = findViewById(R.id.et_collection_period);
         et_bluetooth_name = findViewById(R.id.et_bluetooth_name);
         et_gomore_age = findViewById(R.id.et_gomore_age);
@@ -900,4 +903,11 @@ public class TestActivity extends BaseActivity implements IResponseListenerLite,
         return sb.toString();
     }
     private static String mark(int v) { return v != 0 ? "✓" : "✗"; }
+
+    // Preset measuring intervals (protocol 0x37/0x00: seconds, minimum 60, applies from the next cycle)
+    private void setMeasureInterval(int seconds) {
+        lastSetPeriod = seconds;
+        postView("\nSetting the ring to measure every " + (seconds / 60) + " min (applies from its next cycle)...");
+        LmAPILite.SET_COLLECTION(seconds, iSystemControlListenerLite);
+    }
 }
