@@ -255,7 +255,7 @@ public class TestActivity2 extends BaseActivity implements IResponseListenerLite
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test2);
-        tv_result2 = findViewById(R.id.tv_result2);
+        tv_result2 = findViewById(R.id.tv_result2); enableShareLog(tv_result2);
         findViewById(R.id.bt_unpair).setOnClickListener(this);
         findViewById(R.id.bt_set_HID).setOnClickListener(this);
         findViewById(R.id.bt_get_HID).setOnClickListener(this);
@@ -589,4 +589,16 @@ public class TestActivity2 extends BaseActivity implements IResponseListenerLite
     }
 
 
+
+    // Long-press the output area to share the whole log as text (added for testing)
+    private void enableShareLog(final android.widget.TextView tv) {
+        tv.setOnLongClickListener(v -> {
+            android.content.Intent i = new android.content.Intent(android.content.Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(android.content.Intent.EXTRA_SUBJECT, "Ring test log");
+            i.putExtra(android.content.Intent.EXTRA_TEXT, tv.getText().toString());
+            startActivity(android.content.Intent.createChooser(i, "Share ring log"));
+            return true;
+        });
+    }
 }

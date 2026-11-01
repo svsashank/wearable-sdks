@@ -134,7 +134,7 @@ public class TestActivity extends BaseActivity implements IResponseListenerLite,
         setContentView(R.layout.activity_test);
         LmAPILite.addWLSCmdListener(this, this);
 
-        tv_result=findViewById(R.id.tv_result);
+        tv_result=findViewById(R.id.tv_result); enableShareLog(tv_result);
         et_collection_period = findViewById(R.id.et_collection_period);
         et_bluetooth_name = findViewById(R.id.et_bluetooth_name);
         et_gomore_age = findViewById(R.id.et_gomore_age);
@@ -868,6 +868,18 @@ public class TestActivity extends BaseActivity implements IResponseListenerLite,
             }
 
 
+        });
+    }
+
+    // Long-press the output area to share the whole log as text (added for testing)
+    private void enableShareLog(final android.widget.TextView tv) {
+        tv.setOnLongClickListener(v -> {
+            android.content.Intent i = new android.content.Intent(android.content.Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(android.content.Intent.EXTRA_SUBJECT, "Ring test log");
+            i.putExtra(android.content.Intent.EXTRA_TEXT, tv.getText().toString());
+            startActivity(android.content.Intent.createChooser(i, "Share ring log"));
+            return true;
         });
     }
 }
