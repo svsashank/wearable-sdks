@@ -105,7 +105,14 @@ public class TestActivity2 extends BaseActivity implements IResponseListenerLite
 
         @Override
         public void controlAudioResult(byte[] bytes, int audioType, int samplingFrequency, int audioAccuracy) {
-            postView("\nAudio length "+bytes.length+", type (1 mono, 2 stereo): "+audioType);
+            if (recBuf.size() == 0) {
+                recStartMs = System.currentTimeMillis();
+                postView("\nReceiving audio: channels=" + audioType + ", rate code=" + samplingFrequency + ", bits code=" + audioAccuracy + ", chunk=" + bytes.length + " bytes");
+            }
+            recChannels = audioType;
+            recBuf.write(bytes, 0, bytes.length);
+            recChunks++;
+            if (recChunks % 20 == 0) postView("\n...audio " + (recBuf.size() / 1024) + " KB received");
         }
 
         @Override
@@ -360,6 +367,8 @@ public class TestActivity2 extends BaseActivity implements IResponseListenerLite
         }
 
         if(v.getId()== R.id.bt_set_audio_type){
+            recBuf.reset(); recChunks = 0;
+            postView("\nRecording... speak now, then tap STOP RECORDING");
             LmAPILite.CONTROL_AUDIO_ADPCM((byte)0x01,audiolistenerLite);
         }
         if(v.getId()== R.id.bt_get_audio_type){
@@ -367,6 +376,7 @@ public class TestActivity2 extends BaseActivity implements IResponseListenerLite
         }
         if(v.getId()== R.id.bt_stop_audio){
             LmAPILite.CONTROL_AUDIO_ADPCM((byte)0x0,audiolistenerLite);
+            saveRecording();
         }
 
 
@@ -600,5 +610,49 @@ public class TestActivity2 extends BaseActivity implements IResponseListenerLite
             startActivity(android.content.Intent.createChooser(i, "Share ring log"));
             return true;
         });
+    }
+
+    // ---- Added for testing: keep the decoded audio and save it as a WAV file in Downloads ----
+    private final java.io.ByteArrayOutputStream recBuf = new java.io.ByteArrayOutputStream();
+    private long recStartMs = 0;
+    private int recChunks = 0;
+    private int recChannels = 1;
+
+    private void saveRecording() {
+        final byte[] pcm = recBuf.toByteArray();
+        if (pcm.length == 0) { postView("\nNo audio received. Try START RECORDING again."); return; }
+        double secs = Math.max(0.5, (System.currentTimeMillis() - recStartMs) / 1000.0);
+        int ch = Math.max(1, recChannels);
+        double measured = pcm.length / 2.0 / ch / secs;
+        int rate = measured > 12000 ? 16000 : 8000;   // the SDK hands us 16-bit PCM
+        String name = "ring-voice-" + new java.text.SimpleDateFormat("yyyyMMdd-HHmmss", java.util.Locale.US).format(new java.util.Date()) + ".wav";
+        try {
+            byte[] wav = wavBytes(pcm, rate, ch);
+            if (android.os.Build.VERSION.SDK_INT >= 29) {
+                android.content.ContentValues cv = new android.content.ContentValues();
+                cv.put(android.provider.MediaStore.Downloads.DISPLAY_NAME, name);
+                cv.put(android.provider.MediaStore.Downloads.MIME_TYPE, "audio/wav");
+                android.net.Uri uri = getContentResolver().insert(android.provider.MediaStore.Downloads.EXTERNAL_CONTENT_URI, cv);
+                try (java.io.OutputStream os = getContentResolver().openOutputStream(uri)) { os.write(wav); }
+            } else {
+                java.io.File f = new java.io.File(android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS), name);
+                try (java.io.FileOutputStream os = new java.io.FileOutputStream(f)) { os.write(wav); }
+            }
+            postView(String.format(java.util.Locale.US,
+                "\nSAVED %s in Downloads: %.1f s recorded, %d KB, %d Hz (measured %.0f), %d channel(s)",
+                name, secs, pcm.length / 1024, rate, measured, ch));
+        } catch (Exception e) {
+            postView("\nCould not save audio: " + e);
+        }
+        recBuf.reset(); recChunks = 0;
+    }
+
+    private static byte[] wavBytes(byte[] pcm, int rate, int ch) {
+        java.nio.ByteBuffer b = java.nio.ByteBuffer.allocate(44 + pcm.length).order(java.nio.ByteOrder.LITTLE_ENDIAN);
+        b.put("RIFF".getBytes()).putInt(36 + pcm.length).put("WAVE".getBytes());
+        b.put("fmt ".getBytes()).putInt(16).putShort((short) 1).putShort((short) ch).putInt(rate)
+         .putInt(rate * ch * 2).putShort((short) (ch * 2)).putShort((short) 16);
+        b.put("data".getBytes()).putInt(pcm.length).put(pcm);
+        return b.array();
     }
 }
